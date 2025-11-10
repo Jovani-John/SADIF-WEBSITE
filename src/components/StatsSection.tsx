@@ -10,18 +10,23 @@ export default function StatsSection() {
     { number: 100, label: "نسبة الرضا", suffix: "%" },
   ];
 
-  const Counter = ({ end, duration = 2 }) => {
-    const ref = useRef(null);
+  interface CounterProps {
+    end: number;
+    duration?: number;
+  }
+
+  const Counter = ({ end, duration = 2 }: CounterProps) => {
+    const ref = useRef<HTMLSpanElement | null>(null);
     const isInView = useInView(ref, { once: true });
     const [count, setCount] = useState(0);
 
     useEffect(() => {
       if (!isInView) return;
 
-      let startTime;
-      let raf;
+      let startTime: number | undefined;
+      let raf: number;
 
-      const animate = (time) => {
+      const animate = (time: number) => {
         if (!startTime) startTime = time;
         const progress = Math.min((time - startTime) / (duration * 1000), 1);
 
