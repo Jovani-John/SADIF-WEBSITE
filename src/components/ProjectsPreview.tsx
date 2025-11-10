@@ -1,10 +1,28 @@
 'use client';
 
-import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
+import { motion, useScroll, useTransform, useSpring, MotionValue } from 'framer-motion';
 import { useRef, useEffect } from 'react';
 import Link from 'next/link';
 
-const projects = [
+interface Project {
+  id: number;
+  title: string;
+  subtitle: string;
+  titleEn: string;
+  subtitleEn: string;
+  image: string;
+  number: string;
+}
+
+interface ProjectCardProps {
+  project: Project;
+  index: number;
+  progress: MotionValue<number>;
+  range: [number, number];
+  totalProjects: number;
+}
+
+const projects: Project[] = [
   {
     id: 1,
     title: 'تحويل صالة عرض إلى متحف',
@@ -156,7 +174,7 @@ export default function ProjectsSection() {
   );
 }
 
-function ProjectCard({ project, index, progress, range, totalProjects }) {
+function ProjectCard({ project, index, progress, range, totalProjects }: ProjectCardProps) {
   const isLast = index === totalProjects - 1;
   const isFirst = index === 0;
   const isEven = index % 2 === 0; // لتحديد اتجاه الأنيميشن
@@ -191,7 +209,7 @@ function ProjectCard({ project, index, progress, range, totalProjects }) {
   const smoothOpacity = useSpring(opacity, { stiffness: 60, damping: 30 });
 
   // دالة لتقسيم النص لكلمات بدل الحروف
-  const splitText = (text) => {
+  const splitText = (text: string) => {
     return text.split(' ').map((word, i) => ({
       word: word,
       index: i
