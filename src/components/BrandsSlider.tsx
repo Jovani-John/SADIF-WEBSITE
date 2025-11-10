@@ -1,8 +1,14 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { useRef } from 'react';
 
 const brands = [
+  '/imags/Alhawan.png',
+  '/imags/ETTIFAQ.png',
+  '/imags/JYS.png',
+  '/imags/NSH.png',
+  '/imags/SPC.png',
   '/imags/Alhawan.png',
   '/imags/ETTIFAQ.png',
   '/imags/JYS.png',
@@ -11,8 +17,7 @@ const brands = [
 ];
 
 export default function BrandsSlider() {
-  // كرر البراندات 3 مرات لضمان استمرارية السلايدر
-  const duplicatedBrands = [...brands, ...brands, ...brands];
+  const constraintsRef = useRef(null);
 
   return (
     <section className="py-20 bg-white overflow-hidden">
@@ -43,7 +48,7 @@ export default function BrandsSlider() {
             className="text-lg md:text-xl text-[#979188]"
             style={{ fontFamily: 'Alexandria, sans-serif' }}
           >
-            شركاء النجاح الذين وثقوا بنا
+            شركاء النجاح الذين وثقوا بنا - اسحب لتصفح المزيد
           </motion.p>
           
           <motion.div
@@ -56,44 +61,51 @@ export default function BrandsSlider() {
         </motion.div>
       </div>
 
-      {/* Infinite Slider */}
-      <div className="relative w-full overflow-hidden">
+      {/* Draggable Slider */}
+      <div className="relative w-full overflow-hidden" ref={constraintsRef}>
         <motion.div
-          className="flex gap-20 items-center"
-          animate={{ 
-            x: [0, -(brands.length * (192 + 80))]
-          }}
-          transition={{
-            x: {
-              repeat: Infinity,
-              repeatType: 'loop',
-              duration: 30,
-              ease: 'linear',
-            },
-          }}
+          drag="x"
+          dragConstraints={constraintsRef}
+          dragElastic={0.1}
+          dragTransition={{ bounceStiffness: 300, bounceDamping: 30 }}
+          className="flex gap-12 md:gap-20 items-center cursor-grab active:cursor-grabbing"
           style={{ width: 'max-content' }}
+          whileTap={{ cursor: 'grabbing' }}
         >
-          {duplicatedBrands.map((brand, index) => (
+          {brands.map((brand, index) => (
             <motion.div
               key={index}
               whileHover={{ 
-                scale: 1.1,
+                scale: 1.05,
                 transition: { duration: 0.3 }
               }}
-              className="flex-shrink-0 w-48 h-32 flex items-center justify-center"
+              className="flex-shrink-0 w-32 h-24 md:w-48 md:h-32 flex items-center justify-center pointer-events-none"
             >
               <img
                 src={brand}
                 alt={`Brand ${index + 1}`}
                 className="max-w-full max-h-full object-contain transition-all duration-300"
+                draggable="false"
               />
             </motion.div>
           ))}
         </motion.div>
 
         {/* Gradient Overlays على الجوانب */}
-        <div className="absolute left-0 top-0 bottom-0 w-40 bg-gradient-to-r from-white via-white/50 to-transparent pointer-events-none z-10"></div>
-        <div className="absolute right-0 top-0 bottom-0 w-40 bg-gradient-to-l from-white via-white/50 to-transparent pointer-events-none z-10"></div>
+        <div className="absolute left-0 top-0 bottom-0 w-20 md:w-40 bg-gradient-to-r from-white via-white/50 to-transparent pointer-events-none z-10"></div>
+        <div className="absolute right-0 top-0 bottom-0 w-20 md:w-40 bg-gradient-to-l from-white via-white/50 to-transparent pointer-events-none z-10"></div>
+      </div>
+
+      {/* Scroll Indicator */}
+      <div className="text-center mt-8">
+        <motion.div
+          animate={{ x: [0, 10, 0] }}
+          transition={{ repeat: Infinity, duration: 1.5 }}
+          className="inline-flex items-center gap-2 text-[#979188] text-sm"
+          style={{ fontFamily: 'Alexandria, sans-serif' }}
+        >
+          <span>← اسحب لليمين واليسار →</span>
+        </motion.div>
       </div>
     </section>
   );

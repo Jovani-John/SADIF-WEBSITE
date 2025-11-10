@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, useScroll, useTransform, useSpring, MotionValue } from 'framer-motion';
-import { useRef, useEffect } from 'react';
+import { useRef, useState, useEffect } from 'react';
 
 interface Project {
   id: number;
@@ -19,6 +19,7 @@ interface ProjectCardProps {
   progress: MotionValue<number>;
   range: [number, number];
   totalProjects: number;
+  isMobile: boolean;
 }
 
 const projects: Project[] = [
@@ -62,6 +63,18 @@ const projects: Project[] = [
 
 export default function ProjectsSection() {
   const containerRef = useRef(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"]
@@ -149,6 +162,7 @@ export default function ProjectsSection() {
                 progress={scrollYProgress}
                 range={[index / projects.length, (index + 1) / projects.length]}
                 totalProjects={projects.length}
+                isMobile={isMobile}
               />
             </div>
           ))}
@@ -158,15 +172,16 @@ export default function ProjectsSection() {
   );
 }
 
-function ProjectCard({ project, index, progress, range, totalProjects }: ProjectCardProps) {
+function ProjectCard({ project, index, progress, range, totalProjects, isMobile }: ProjectCardProps) {
   const isLast = index === totalProjects - 1;
   const isFirst = index === 0;
   const isEven = index % 2 === 0;
 
+  // تبسيط الحسابات للموبايل
   const fadeInStart = range[0];
-  const fadeInEnd = range[0] + 0.15;
+  const fadeInEnd = range[0] + (isMobile ? 0.1 : 0.15);
   const stayStart = fadeInEnd;
-  const stayEnd = range[1] - 0.15;
+  const stayEnd = range[1] - (isMobile ? 0.1 : 0.15);
   const fadeOutStart = stayEnd;
   const fadeOutEnd = range[1];
 
@@ -176,21 +191,32 @@ function ProjectCard({ project, index, progress, range, totalProjects }: Project
     [isFirst ? 1 : 0, 1, 1, 1, isLast ? 1 : 1, isLast ? 1 : 0]
   );
 
+  // تقليل التأثيرات على الموبايل
   const scale = useTransform(
     progress,
     [fadeInStart, fadeInEnd, stayEnd, fadeOutEnd],
-    [isFirst ? 1 : 0.85, 1, 1, isLast ? 1 : 0.85]
+    isMobile ? [1, 1, 1, 1] : [isFirst ? 1 : 0.85, 1, 1, isLast ? 1 : 0.85]
   );
 
   const y = useTransform(
     progress,
     [fadeInStart, fadeInEnd, stayEnd, fadeOutEnd],
-    [isFirst ? 0 : 100, 0, 0, isLast ? 0 : -100]
+    isMobile ? [0, 0, 0, 0] : [isFirst ? 0 : 100, 0, 0, isLast ? 0 : -100]
   );
 
-  const smoothScale = useSpring(scale, { stiffness: 60, damping: 30 });
-  const smoothY = useSpring(y, { stiffness: 60, damping: 30 });
-  const smoothOpacity = useSpring(opacity, { stiffness: 60, damping: 30 });
+  // تقليل الـ spring stiffness للموبايل
+  const smoothScale = useSpring(scale, { 
+    stiffness: isMobile ? 100 : 60, 
+    damping: isMobile ? 40 : 30 
+  });
+  const smoothY = useSpring(y, { 
+    stiffness: isMobile ? 100 : 60, 
+    damping: isMobile ? 40 : 30 
+  });
+  const smoothOpacity = useSpring(opacity, { 
+    stiffness: isMobile ? 100 : 60, 
+    damping: isMobile ? 40 : 30 
+  });
 
   const splitText = (text: string) => {
     return text.split(' ').map((word, i) => ({
@@ -213,15 +239,16 @@ function ProjectCard({ project, index, progress, range, totalProjects }: Project
           {/* Image Side */}
           <motion.div
             className={`relative w-full aspect-[4/3] bg-gray-100 overflow-hidden ${isEven ? '' : 'lg:col-start-2'}`}
-            initial={{ opacity: 0, x: isEven ? -50 : 50 }}
+            initial={{ opacity: 0, x: isMobile ? 0 : (isEven ? -50 : 50) }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            transition={{ duration: isMobile ? 0.5 : 0.8, ease: "easeOut" }}
           >
             <img
               src={project.image}
               alt={project.title}
               className="w-full h-full object-cover"
+              loading="lazy"
             />
             
             <motion.div
@@ -234,10 +261,10 @@ function ProjectCard({ project, index, progress, range, totalProjects }: Project
             <motion.p
               className="text-xs sm:text-sm uppercase tracking-widest text-gray-500"
               style={{ fontFamily: 'Inter, sans-serif' }}
-              initial={{ opacity: 0, x: isEven ? 50 : -50 }}
+              initial={{ opacity: 0, x: isMobile ? 0 : (isEven ? 50 : -50) }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+              transition={{ duration: isMobile ? 0.4 : 0.6, delay: 0.2 }}
             >
               {project.subtitleEn}
             </motion.p>
@@ -248,31 +275,20 @@ function ProjectCard({ project, index, progress, range, totalProjects }: Project
                 fontFamily: 'Alexandria, sans-serif',
                 lineHeight: '1.2'
               }}
-              initial="hidden"
-              whileInView="visible"
+              initial={{ opacity: 0, x: isMobile ? 0 : (isEven ? 50 : -50) }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: isMobile ? 0.4 : 0.6, delay: 0.3 }}
             >
-              {splitText(project.titleEn).map((item, i) => (
-                <motion.span
-                  key={i}
-                  className="inline-block mr-2"
-                  variants={{
-                    hidden: { opacity: 0, x: isEven ? 50 : -50 },
-                    visible: { opacity: 1, x: 0 }
-                  }}
-                  transition={{ duration: 0.5, delay: 0.3 + i * 0.05 }}
-                >
-                  {item.word}
-                </motion.span>
-              ))}
+              {project.titleEn}
             </motion.h3>
 
             <motion.div
               className="h-px bg-black w-12 sm:w-16"
-              initial={{ width: 0, x: isEven ? 50 : -50 }}
+              initial={{ width: 0, x: isMobile ? 0 : (isEven ? 50 : -50) }}
               whileInView={{ width: '4rem', x: 0 }}
               viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
+              transition={{ duration: isMobile ? 0.5 : 0.8, delay: 0.4 }}
             />
 
             <motion.h4
@@ -282,23 +298,12 @@ function ProjectCard({ project, index, progress, range, totalProjects }: Project
                 direction: 'rtl',
                 lineHeight: '1.4'
               }}
-              initial="hidden"
-              whileInView="visible"
+              initial={{ opacity: 0, y: isMobile ? 0 : 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: isMobile ? 0.4 : 0.6, delay: 0.5 }}
             >
-              {splitText(project.title).map((item, i) => (
-                <motion.span
-                  key={i}
-                  className="inline-block ml-2"
-                  variants={{
-                    hidden: { opacity: 0, y: 20 },
-                    visible: { opacity: 1, y: 0 }
-                  }}
-                  transition={{ duration: 0.4, delay: 0.6 + i * 0.03 }}
-                >
-                  {item.word}
-                </motion.span>
-              ))}
+              {project.title}
             </motion.h4>
 
             <motion.p
@@ -308,10 +313,10 @@ function ProjectCard({ project, index, progress, range, totalProjects }: Project
                 direction: 'rtl',
                 lineHeight: '1.6'
               }}
-              initial={{ opacity: 0, x: isEven ? 50 : -50 }}
+              initial={{ opacity: 0, x: isMobile ? 0 : (isEven ? 50 : -50) }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.6, delay: 0.8 }}
+              transition={{ duration: isMobile ? 0.4 : 0.6, delay: 0.6 }}
             >
               {project.subtitle}
             </motion.p>
@@ -321,10 +326,10 @@ function ProjectCard({ project, index, progress, range, totalProjects }: Project
         {/* Project Number & Navigation */}
         <motion.div
           className="flex flex-col sm:flex-row items-center justify-between gap-6 mt-8 sm:mt-12"
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: isMobile ? 0 : 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6, delay: 0.9 }}
+          transition={{ duration: isMobile ? 0.4 : 0.6, delay: 0.7 }}
         >
           <div className="flex items-center gap-3">
             <span className="text-4xl sm:text-5xl md:text-6xl font-bold" style={{ fontFamily: 'Alexandria, sans-serif' }}>

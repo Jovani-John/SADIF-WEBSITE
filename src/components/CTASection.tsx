@@ -12,7 +12,7 @@ export default function CTASection() {
           
           {/* النص - الجزء الأيسر */}
           <motion.div 
-            className="relative z-10 py-20 lg:py-32 px-8 lg:px-16"
+            className="relative z-10 py-20 lg:py-32 px-8 lg:px-16 flex flex-col gap-y-6"
             initial={{ opacity: 0, x: -150 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: false, margin: "-100px" }}
@@ -43,7 +43,7 @@ export default function CTASection() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: false }}
                 transition={{ duration: 1, delay: 0.3, ease: [0.43, 0.13, 0.23, 0.96] }}
-                className="text-5xl lg:text-7xl font-bold text-[#000000] mb-4"
+className="text-5xl lg:text-7xl font-bold text-[#000000] mb-4 leading-snug sm:leading-relaxed break-words"
               >
                 جاهز لتحويل
               </motion.div>
@@ -56,7 +56,7 @@ export default function CTASection() {
                 className="text-5xl lg:text-7xl font-bold text-[#000000]"
               >
                 <motion.span 
-                  className="text-[#979188]"
+                  className="text-[#979188] m-10"
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: false }}
@@ -64,7 +64,8 @@ export default function CTASection() {
                 >
                   رؤيتك
                 </motion.span>{' '}
-                إلى واقع؟
+                إلى
+                 واقع؟
               </motion.div>
             </div>
 
@@ -74,7 +75,7 @@ export default function CTASection() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: false }}
               transition={{ duration: 1, delay: 0.8, ease: [0.43, 0.13, 0.23, 0.96] }}
-              className="text-xl lg:text-2xl text-[#979188] mb-8 leading-relaxed"
+              className="text-xl lg:text-2xl text-[#979188] leading-relaxed"
               style={{ fontFamily: 'Alexandria, sans-serif', direction: 'rtl' }}
             >
               دعنا نحول أفكارك إلى تصاميم استثنائية تمزج بين الجمال والوظيفة والهوية الثقافية.
@@ -86,7 +87,7 @@ export default function CTASection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false }}
               transition={{ duration: 0.7, delay: 0.7 }}
-              className="flex flex-col sm:flex-row gap-4 mb-12"
+              className="flex flex-col sm:flex-row gap-4"
             >
               <Link
                 href="/contact"
@@ -137,7 +138,7 @@ export default function CTASection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false }}
               transition={{ duration: 0.6, delay: 0.8 }}
-              className="flex flex-col sm:flex-row gap-6 text-[#979188]"
+              className="flex flex-col sm:flex-row gap-6 mt-6"
             >
               <motion.div 
                 className="flex items-center gap-2"
@@ -175,13 +176,13 @@ export default function CTASection() {
                 transition={{ duration: 1.2, ease: "easeOut" }}
                 className="w-full h-full"
               >
-                <motion.img
-                  src="/imags/Logo.png"
-                  alt="Sadif Projects"
-                  className="w-full h-full object-cover"
-                  whileHover={{ scale: 1.1 }}
-                  transition={{ duration: 0.8, ease: "easeOut" }}
-                />
+<motion.img
+  src="/imags/Logo.png"
+  alt="Sadif Projects"
+  className="w-full h-full object-contain lg:object-cover"
+  whileHover={{ scale: 1.1 }}
+  transition={{ duration: 0.8, ease: "easeOut" }}
+/>
               </motion.div>
               
               {/* Overlay */}
