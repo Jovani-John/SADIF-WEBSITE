@@ -29,7 +29,7 @@ export default function Testimonials() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
-  const autoScrollRef = useRef<NodeJS.Timeout>();
+const autoScrollRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     if (!isDragging) {
