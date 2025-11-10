@@ -10,7 +10,7 @@ import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 
 // ✅ إضافة Framer Motion
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 
 // ✅ Fix Leaflet Icons - with TypeScript fix
 const DefaultIcon = L.Icon.Default.prototype as any;
@@ -23,31 +23,31 @@ L.Icon.Default.mergeOptions({
 });
 
 // ✅ Animations جاهزة
-const slideRight = {
+const slideRight: Variants = {
   hidden: { opacity: 0, x: 80 },
   visible: {
     opacity: 1,
     x: 0,
-    transition: { duration: 0.7, ease: [0.6, 0.01, 0.05, 0.95] }
+    transition: { duration: 0.7, ease: [0.6, 0.01, 0.05, 0.95] as any }
   }
 };
 
-const slideLeft = {
+const slideLeft: Variants = {
   hidden: { opacity: 0, x: -80 },
   visible: {
     opacity: 1,
     x: 0,
-    transition: { duration: 0.7, ease: [0.6, 0.01, 0.05, 0.95] }
+    transition: { duration: 0.7, ease: [0.6, 0.01, 0.05, 0.95] as any }
   }
 };
 
-const fadeUp = {
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 40, scale: 0.97 },
   visible: {
     opacity: 1,
     y: 0,
     scale: 1,
-    transition: { duration: 0.7, ease: [0.6, 0.01, 0.05, 0.95] }
+    transition: { duration: 0.7, ease: [0.6, 0.01, 0.05, 0.95] as any }
   }
 };
 
