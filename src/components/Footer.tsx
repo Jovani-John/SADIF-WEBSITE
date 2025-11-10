@@ -1,5 +1,5 @@
 'use client';
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { FaInstagram, FaTiktok, FaWhatsapp, FaMapMarkerAlt, FaPhone, FaEnvelope } from "react-icons/fa";
 
 const COMPANY_INFO = {
@@ -27,7 +27,7 @@ const QUICK_LINKS = [
 ];
 
 export default function Footer() {
-  const container = {
+  const container: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -35,14 +35,14 @@ export default function Footer() {
     },
   };
 
-  const item = {
+  const item: Variants = {
     hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
       y: 0,
       transition: { 
         duration: 0.8, 
-        ease: [0.4, 0, 0.2, 1] // تم تغيير ease من string إلى array
+        ease: "easeOut"
       },
     },
   };
