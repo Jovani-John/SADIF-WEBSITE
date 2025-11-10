@@ -1,0 +1,28 @@
+/* 1. imports */
+@import url('https://fonts.googleapis.com/css2?family=Alexandria:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
+
+/* 2. styles الأساسية */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Alexandria', sans-serif;
+  background-color: #FFFFFF;
+  color: #000000;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* 3. animations */
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
