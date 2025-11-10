@@ -84,11 +84,7 @@ export default function Testimonials() {
     visible: {
       opacity: 1,
       y: 0,
-      scale: 1,
-      transition: {
-        duration: 0.7,
-        ease: [0.16, 1, 0.3, 1]
-      }
+      scale: 1
     }
   };
 
@@ -105,6 +101,7 @@ export default function Testimonials() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
           className="mb-8 sm:mb-12 lg:mb-16"
         >
           <div className="flex flex-col items-center text-center gap-4 sm:gap-6 mb-6">
@@ -114,6 +111,7 @@ export default function Testimonials() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
+              transition={{ duration: 0.7, ease: "easeOut" }}
               className="relative"
             >
               <div className="bg-gradient-to-br from-[#000000] to-[#979188] p-4 sm:p-5 lg:p-6 rounded-2xl sm:rounded-3xl shadow-2xl">
@@ -133,6 +131,7 @@ export default function Testimonials() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
+                transition={{ duration: 0.7, ease: "easeOut" }}
                 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-[#000000] leading-tight mb-3"
               >
                 Client Testimonials
