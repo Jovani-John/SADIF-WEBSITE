@@ -31,10 +31,10 @@ export default function ProjectsPage() {
   // Create fancy layout patterns for each row (2 projects per row)
   const getProjectLayout = (index: number) => {
     const rowPatterns = [
-      [{ span: 'lg:col-span-7', height: 'h-[600px]' }, { span: 'lg:col-span-5', height: 'h-[600px]' }],
-      [{ span: 'lg:col-span-5', height: 'h-[550px]' }, { span: 'lg:col-span-7', height: 'h-[550px]' }],
-      [{ span: 'lg:col-span-6', height: 'h-[650px]' }, { span: 'lg:col-span-6', height: 'h-[650px]' }],
-      [{ span: 'lg:col-span-4', height: 'h-[500px]' }, { span: 'lg:col-span-8', height: 'h-[500px]' }],
+      [{ span: 'lg:col-span-7', height: 'h-[400px] md:h-[500px] lg:h-[600px]' }, { span: 'lg:col-span-5', height: 'h-[400px] md:h-[500px] lg:h-[600px]' }],
+      [{ span: 'lg:col-span-5', height: 'h-[400px] md:h-[450px] lg:h-[550px]' }, { span: 'lg:col-span-7', height: 'h-[400px] md:h-[450px] lg:h-[550px]' }],
+      [{ span: 'lg:col-span-6', height: 'h-[400px] md:h-[500px] lg:h-[650px]' }, { span: 'lg:col-span-6', height: 'h-[400px] md:h-[500px] lg:h-[650px]' }],
+      [{ span: 'lg:col-span-4', height: 'h-[350px] md:h-[400px] lg:h-[500px]' }, { span: 'lg:col-span-8', height: 'h-[350px] md:h-[400px] lg:h-[500px]' }],
     ];
 
     const rowIndex = Math.floor(index / 2);
@@ -45,16 +45,16 @@ export default function ProjectsPage() {
   };
 
   return (
-    <main className="min-h-screen bg-[#ECE6E3]">
+    <main className="min-h-screen bg-[#ECE6E3] overflow-x-hidden">
       {/* Header Section */}
-      <section className="pt-32 pb-16 bg-white border-b border-[#ECE6E3]">
-        <div className="container mx-auto px-6">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+      <section className="pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-14 md:pb-16 bg-white border-b border-[#ECE6E3]">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 sm:gap-6">
             <motion.div initial={{ x: -50, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ duration: 0.6 }}>
-              <h1 className="text-5xl md:text-6xl font-bold text-[#000000]" style={{ fontFamily: 'Alexandria, sans-serif' }}>
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-[#000000]" style={{ fontFamily: 'Alexandria, sans-serif' }}>
                 Featured projects
               </h1>
-              <motion.div initial={{ width: 0 }} animate={{ width: "120px" }} transition={{ delay: 0.3, duration: 0.6 }} className="h-1 bg-[#979188] mt-4" />
+              <motion.div initial={{ width: 0 }} animate={{ width: "80px" }} transition={{ delay: 0.3, duration: 0.6 }} className="h-1 bg-[#979188] mt-3 sm:mt-4" />
             </motion.div>
 
             <motion.button
@@ -62,9 +62,9 @@ export default function ProjectsPage() {
               animate={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.6 }}
               onClick={() => setShowFilter(!showFilter)}
-              className="flex items-center gap-2 px-6 py-3 bg-[#000000] text-white rounded-lg hover:bg-[#979188] transition-colors"
+              className="flex items-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 bg-[#000000] text-white rounded-lg hover:bg-[#979188] transition-colors text-sm sm:text-base"
             >
-              <FiFilter className="text-xl" />
+              <FiFilter className="text-lg sm:text-xl" />
               <span style={{ fontFamily: 'Alexandria, sans-serif' }}>FILTER</span>
             </motion.button>
           </div>
@@ -75,9 +75,9 @@ export default function ProjectsPage() {
             transition={{ duration: 0.3 }}
             className="overflow-hidden"
           >
-            <div className="mt-8 p-6 bg-[#ECE6E3] rounded-2xl">
-              <div className="mb-6">
-                <label className="block text-sm font-medium text-[#000000] mb-2" style={{ fontFamily: 'Alexandria, sans-serif' }}>
+            <div className="mt-6 sm:mt-8 p-4 sm:p-6 bg-[#ECE6E3] rounded-2xl">
+              <div className="mb-4 sm:mb-6">
+                <label className="block text-xs sm:text-sm font-medium text-[#000000] mb-2" style={{ fontFamily: 'Alexandria, sans-serif' }}>
                   البحث بالاسم / Search by Name
                 </label>
                 <input
@@ -85,23 +85,23 @@ export default function ProjectsPage() {
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   placeholder="ابحث عن مشروع..."
-                  className="w-full px-4 py-3 rounded-lg border-2 border-[#979188] focus:border-[#000000] outline-none transition-colors"
+                  className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg border-2 border-[#979188] focus:border-[#000000] outline-none transition-colors text-sm sm:text-base"
                   style={{ fontFamily: 'Alexandria, sans-serif' }}
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-[#000000] mb-3" style={{ fontFamily: 'Alexandria, sans-serif' }}>
+                <label className="block text-xs sm:text-sm font-medium text-[#000000] mb-2 sm:mb-3" style={{ fontFamily: 'Alexandria, sans-serif' }}>
                   التصنيف / Category
                 </label>
-                <div className="flex flex-wrap gap-3">
+                <div className="flex flex-wrap gap-2 sm:gap-3">
                   {categories.map((category) => (
                     <motion.button
                       key={category.id}
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       onClick={() => setSelectedCategory(category.id)}
-                      className={`px-6 py-3 rounded-lg font-medium transition-all ${
+                      className={`px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-medium transition-all text-sm sm:text-base ${
                         selectedCategory === category.id ? 'bg-[#000000] text-white' : 'bg-white text-[#000000] hover:bg-[#979188] hover:text-white'
                       }`}
                       style={{ fontFamily: 'Alexandria, sans-serif' }}
@@ -120,7 +120,7 @@ export default function ProjectsPage() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   onClick={() => { setSearchTerm(''); setSelectedCategory('all'); }}
-                  className="mt-4 flex items-center gap-2 text-[#979188] hover:text-[#000000] transition-colors"
+                  className="mt-3 sm:mt-4 flex items-center gap-2 text-[#979188] hover:text-[#000000] transition-colors text-sm sm:text-base"
                   style={{ fontFamily: 'Alexandria, sans-serif' }}
                 >
                   <FiX />
@@ -133,14 +133,14 @@ export default function ProjectsPage() {
       </section>
 
       {/* Projects Grid */}
-      <section className="py-16">
-        <div className="container mx-auto px-6">
+      <section className="py-12 sm:py-14 md:py-16">
+        <div className="container mx-auto px-4 sm:px-6">
           {filteredProjects.length === 0 ? (
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-20">
-              <p className="text-2xl text-[#979188]" style={{ fontFamily: 'Alexandria, sans-serif' }}>لا توجد مشاريع مطابقة للبحث</p>
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-16 sm:py-20">
+              <p className="text-xl sm:text-2xl text-[#979188]" style={{ fontFamily: 'Alexandria, sans-serif' }}>لا توجد مشاريع مطابقة للبحث</p>
             </motion.div>
           ) : (
-            <div className="grid lg:grid-cols-12 gap-6 max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 max-w-7xl mx-auto">
               {filteredProjects.map((project, index) => {
                 const layout = getProjectLayout(index);
                 const isEven = index % 2 === 0;
@@ -148,7 +148,7 @@ export default function ProjectsPage() {
                 return (
                   <motion.div
                     key={project.id}
-                    initial={{ y: 50, opacity: 0, x: isEven ? -100 : 100 }}
+                    initial={{ y: 50, opacity: 0, x: isEven ? -50 : 50 }}
                     whileInView={{ y: 0, opacity: 1, x: 0 }}
                     viewport={{ once: false, amount: 0.3 }}
                     transition={{ duration: 0.8, delay: (index % 2) * 0.2, ease: [0.43, 0.13, 0.23, 0.96] }}
@@ -156,7 +156,7 @@ export default function ProjectsPage() {
                   >
                     <Link href={`/projects/${project.id}`} scroll={false}>
                       <motion.div
-                        whileHover={{ y: -10, scale: 1.02 }}
+                        whileHover={{ y: -5, scale: 1.01 }}
                         transition={{ duration: 0.3 }}
                         className={`group relative ${layout.height} overflow-hidden cursor-pointer`}
                         style={{ transformStyle: 'preserve-3d', perspective: '1000px' }}
@@ -173,9 +173,9 @@ export default function ProjectsPage() {
                         </div>
 
                         {/* Project Info Overlay */}
-                        <div className="absolute inset-0 p-8 flex flex-col justify-end">
-                          <motion.div initial={{ x: -20, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} transition={{ delay: 0.2 }} className="mb-4">
-                            <span className="inline-block px-4 py-2 bg-[#979188] text-white text-xs uppercase tracking-wider font-medium" style={{ fontFamily: 'Alexandria, sans-serif' }}>
+                        <div className="absolute inset-0 p-4 sm:p-6 md:p-8 flex flex-col justify-end">
+                          <motion.div initial={{ x: -20, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} transition={{ delay: 0.2 }} className="mb-3 sm:mb-4">
+                            <span className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-[#979188] text-white text-xs uppercase tracking-wider font-medium" style={{ fontFamily: 'Alexandria, sans-serif' }}>
                               {project.categoryAr}
                             </span>
                           </motion.div>
@@ -184,7 +184,7 @@ export default function ProjectsPage() {
                             initial={{ y: 20, opacity: 0 }}
                             whileInView={{ y: 0, opacity: 1 }}
                             transition={{ delay: 0.3 }}
-                            className="text-3xl md:text-4xl font-bold text-white mb-2 group-hover:text-[#979188] transition-colors duration-300"
+                            className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-2 group-hover:text-[#979188] transition-colors duration-300"
                             style={{ fontFamily: 'Alexandria, sans-serif' }}
                           >
                             {project.title}
@@ -194,7 +194,7 @@ export default function ProjectsPage() {
                             initial={{ y: 20, opacity: 0 }}
                             whileInView={{ y: 0, opacity: 1 }}
                             transition={{ delay: 0.35 }}
-                            className="text-lg text-[#ECE6E3] mb-3"
+                            className="text-sm sm:text-base md:text-lg text-[#ECE6E3] mb-2 sm:mb-3"
                             style={{ fontFamily: 'Alexandria, sans-serif' }}
                           >
                             {project.titleEn}
@@ -204,7 +204,7 @@ export default function ProjectsPage() {
                             initial={{ y: 20, opacity: 0 }}
                             whileInView={{ y: 0, opacity: 1 }}
                             transition={{ delay: 0.4 }}
-                            className="flex items-center gap-4 text-sm text-[#ECE6E3]"
+                            className="flex items-center gap-3 sm:gap-4 text-xs sm:text-sm text-[#ECE6E3]"
                             style={{ fontFamily: 'Alexandria, sans-serif' }}
                           >
                             <span>{project.city}</span>
@@ -212,7 +212,7 @@ export default function ProjectsPage() {
                             <span>{project.year}</span>
                           </motion.div>
 
-                          <motion.div initial={{ width: 0 }} whileHover={{ width: '80px' }} className="h-0.5 bg-[#979188] mt-4" />
+                          <motion.div initial={{ width: 0 }} whileHover={{ width: '60px' }} className="h-0.5 bg-[#979188] mt-3 sm:mt-4" />
                         </div>
                       </motion.div>
                     </Link>

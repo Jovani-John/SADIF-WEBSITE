@@ -13,7 +13,7 @@ export default function HomePage() {
       <HeroSection />
       <AboutPreview />
       <WhyChooseUs />
-      <ProjectsPreview />
+          <ProjectsPreview />
       <CTASection />
       <BrandsSlider />
       <Testimonials />

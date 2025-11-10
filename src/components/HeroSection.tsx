@@ -22,6 +22,9 @@ export default function HeroSection() {
 
   const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [1, 0.6, 0]);
   const scale = useTransform(scrollYProgress, [0, 0.5, 1], [1, 0.97, 0.9]);
+
+  // بدل ما نحرك المحتوى كله لفوق، هنخليه في النص
+  // فهنا نخلي حركة الـ Y بسيطة جدًا (زي 0 → -50px)
   const translateY = useTransform(scrollYProgress, [0, 1], [0, -50]);
 
   const clipTop = useTransform(scrollYProgress, (v) => {
@@ -69,10 +72,10 @@ export default function HeroSection() {
         {/* overlay غامق */}
         <motion.div style={{ opacity }} className="absolute inset-0 bg-black/40" />
 
-        {/* المحتوى - الحل هنا 👇 */}
+        {/* المحتوى في النص بالضبط */}
         <motion.div
           style={{ opacity, y: translateY }}
-          className="relative z-20 text-center px-4 sm:px-6 max-w-6xl mx-auto pointer-events-auto flex flex-col items-center justify-center h-full"
+          className="relative z-20 text-center px-4 max-w-6xl mx-auto pointer-events-auto flex flex-col items-center justify-center h-full"
         >
           <AnimatePresence mode="wait">
             <motion.h1
@@ -81,33 +84,29 @@ export default function HeroSection() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -40, scale: 0.95 }}
               transition={{ duration: 0.8, ease: [0.6, -0.05, 0.01, 0.99] }}
-              // الحل الأساسي: غيّرنا الـ text sizes
-              className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-white leading-tight mb-8 sm:mb-12"
-              style={{ 
-                fontFamily: 'Alexandria, sans-serif',
-                lineHeight: '1.2' // مهم للنص العربي
-              }}
+              className="text-6xl md:text-8xl lg:text-9xl font-bold text-white leading-tight mb-12"
+              style={{ fontFamily: 'Alexandria, sans-serif' }}
             >
               {texts[currentText]}
             </motion.h1>
           </AnimatePresence>
 
           <motion.div
-            className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center mt-4"
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.6 }}
           >
             <Link
               href="/contact"
-              className="text-white bg-white/10 hover:bg-white/20 border border-white/30 backdrop-blur-sm transition-all text-sm sm:text-base font-light px-6 sm:px-8 py-3 sm:py-3.5 rounded-full w-full sm:w-auto text-center"
+              className="text-white bg-white/10 hover:bg-white/20 border border-white/30 backdrop-blur-sm transition-all text-base font-light px-8 py-3.5 rounded-full"
               style={{ fontFamily: 'Alexandria, sans-serif' }}
             >
               تواصل معنا
             </Link>
             <Link
               href="/projects"
-              className="text-white bg-white/10 hover:bg-white/20 border border-white/30 backdrop-blur-sm transition-all text-sm sm:text-base font-light px-6 sm:px-8 py-3 sm:py-3.5 rounded-full w-full sm:w-auto text-center"
+              className="text-white bg-white/10 hover:bg-white/20 border border-white/30 backdrop-blur-sm transition-all text-base font-light px-8 py-3.5 rounded-full"
               style={{ fontFamily: 'Alexandria, sans-serif' }}
             >
               مشاريعنا
