@@ -12,8 +12,10 @@ import L from 'leaflet';
 // ✅ إضافة Framer Motion
 import { motion } from 'framer-motion';
 
-// ✅ Fix Leaflet Icons
-delete L.Icon.Default.prototype._getIconUrl;
+// ✅ Fix Leaflet Icons - with TypeScript fix
+const DefaultIcon = L.Icon.Default.prototype as any;
+delete DefaultIcon._getIconUrl;
+
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
   iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
