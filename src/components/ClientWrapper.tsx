@@ -5,21 +5,35 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import ScrollToTop from "./ScrollToTop";
 import LoadingAnimation from "./LoadingAnimation";
-import { usePathname } from "next/navigation";
 
 export default function ClientWrapper({ children }: { children: React.ReactNode }) {
   const [loading, setLoading] = useState(true);
-  const pathname = usePathname();
+  const [hasShownLoading, setHasShownLoading] = useState(false);
 
   useEffect(() => {
-    setLoading(true);
-    const timer = setTimeout(() => setLoading(false), 1300); // مدة الظهور 2 ثانية
-    return () => clearTimeout(timer);
-  }, [pathname]);
+    // تحقق لو اللودينج ظهر قبل كده في الجلسة الحالية
+    const loadingShown = sessionStorage.getItem('loadingShown');
+    
+    if (loadingShown === 'true') {
+      // لو ظهر قبل كده، متظهروش تاني
+      setLoading(false);
+      setHasShownLoading(true);
+    } else {
+      // أول مرة، هيظهر اللودينج
+      setLoading(true);
+    }
+  }, []);
+
+  const handleLoadingFinish = () => {
+    setLoading(false);
+    setHasShownLoading(true);
+    // احفظ في session storage إن اللودينج ظهر
+    sessionStorage.setItem('loadingShown', 'true');
+  };
 
   return (
     <>
-      {loading && <LoadingAnimation />}
+      {loading && !hasShownLoading && <LoadingAnimation onFinish={handleLoadingFinish} />}
       {!loading && (
         <>
           <Navbar />
