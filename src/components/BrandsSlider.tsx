@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, useMotionValue, useSpring } from 'framer-motion';
 import { useRef } from 'react';
 
 const brands = [
@@ -18,6 +18,14 @@ const brands = [
 
 export default function BrandsSlider() {
   const constraintsRef = useRef(null);
+  const x = useMotionValue(0);
+  
+  // Spring animation for smooth dragging
+  const springX = useSpring(x, {
+    stiffness: 150,
+    damping: 25,
+    mass: 0.5
+  });
 
   return (
     <section className="py-20 bg-white overflow-hidden">
@@ -66,10 +74,20 @@ export default function BrandsSlider() {
         <motion.div
           drag="x"
           dragConstraints={constraintsRef}
-          dragElastic={0.1}
-          dragTransition={{ bounceStiffness: 300, bounceDamping: 30 }}
-          className="flex gap-12 md:gap-20 items-center cursor-grab active:cursor-grabbing"
-          style={{ width: 'max-content' }}
+          dragElastic={0.2}
+          dragMomentum={true}
+          dragTransition={{ 
+            power: 0.2,
+            timeConstant: 200,
+            bounceStiffness: 100,
+            bounceDamping: 20
+          }}
+          style={{ 
+            x: springX,
+            width: 'max-content',
+            touchAction: 'pan-y pinch-zoom'
+          }}
+          className="flex gap-12 md:gap-20 items-center cursor-grab active:cursor-grabbing select-none"
           whileTap={{ cursor: 'grabbing' }}
         >
           {brands.map((brand, index) => (
@@ -79,13 +97,14 @@ export default function BrandsSlider() {
                 scale: 1.05,
                 transition: { duration: 0.3 }
               }}
-              className="flex-shrink-0 w-32 h-24 md:w-48 md:h-32 flex items-center justify-center pointer-events-none"
+              className="flex-shrink-0 w-32 h-24 md:w-48 md:h-32 flex items-center justify-center"
             >
               <img
                 src={brand}
                 alt={`Brand ${index + 1}`}
                 className="max-w-full max-h-full object-contain transition-all duration-300"
                 draggable="false"
+                style={{ pointerEvents: 'none' }}
               />
             </motion.div>
           ))}

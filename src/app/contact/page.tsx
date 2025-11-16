@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { FiPhone, FiMail, FiMapPin } from 'react-icons/fi';
-import { FaLinkedinIn, FaInstagram, FaTwitter, FaFacebookF, FaWhatsapp, FaTiktok } from 'react-icons/fa';
+import { FaInstagram,  FaWhatsapp, FaTiktok } from 'react-icons/fa';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
@@ -273,18 +273,31 @@ export default function ContactPage() {
               </div>
             </div>
 
-            <div className="flex gap-4 justify-center mt-12">
-              <a className="bg-white rounded-full p-3 hover:bg-gray-100 transition">
-                <FaTiktok className="w-5 h-5 text-gray-700" />
-              </a>
-              <a className="bg-white rounded-full p-3 hover:bg-gray-100 transition">
-                <FaInstagram className="w-5 h-5 text-gray-700" />
-              </a>
-              <a className="bg-white rounded-full p-3 hover:bg-gray-100 transition">
-                <FaWhatsapp className="w-5 h-5 text-gray-700" />
-              </a>
+<div className="flex gap-4 justify-center mt-12">
+  <a 
+    href="https://www.tiktok.com/@sadif510?is_from_webapp=1&sender_device=pc" 
+    target="_blank" 
+    rel="noopener noreferrer"
+    className="bg-white rounded-full p-3 hover:bg-gray-100 transition"
+  >
+    <FaTiktok className="w-5 h-5 text-gray-700" />
+  </a>
 
-            </div>
+  <a 
+    href="https://www.instagram.com/sadif.co/" 
+    target="_blank" 
+    rel="noopener noreferrer"
+    className="bg-white rounded-full p-3 hover:bg-gray-100 transition"
+  >
+    <FaInstagram className="w-5 h-5 text-gray-700" />
+  </a>
+
+  <a 
+    className="bg-white rounded-full p-3 hover:bg-gray-100 transition"
+  >
+    <FaWhatsapp className="w-5 h-5 text-gray-700" />
+  </a>
+</div>
 
           </motion.div>
 

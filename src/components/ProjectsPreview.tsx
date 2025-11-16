@@ -20,6 +20,7 @@ interface ProjectCardProps {
   range: [number, number];
   totalProjects: number;
   isMobile: boolean;
+  isPreloaded?: boolean;
 }
 
 const projects: Project[] = [
@@ -64,6 +65,7 @@ const projects: Project[] = [
 export default function ProjectsSection() {
   const containerRef = useRef(null);
   const [isMobile, setIsMobile] = useState(false);
+  const [imagesLoaded, setImagesLoaded] = useState<Set<number>>(new Set());
 
   useEffect(() => {
     const checkMobile = () => {
@@ -73,6 +75,21 @@ export default function ProjectsSection() {
     checkMobile();
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // Preload first two images for better performance
+  useEffect(() => {
+    const preloadImages = async () => {
+      const firstTwo = projects.slice(0, 2);
+      firstTwo.forEach((project) => {
+        const img = document.createElement('img');
+        img.src = project.image;
+        img.onload = () => {
+          setImagesLoaded(prev => new Set(prev).add(project.id));
+        };
+      });
+    };
+    preloadImages();
   }, []);
 
   const { scrollYProgress } = useScroll({
@@ -104,7 +121,7 @@ export default function ProjectsSection() {
           transition={{ duration: 1 }}
         >
           <motion.p
-            className="text-sm sm:text-base md:text-lg lg:text-xl uppercase tracking-widest mb-4 sm:mb-6"
+            className="text-sm sm:text-base md:text-lg lg:text-xl uppercase tracking-[0.3em] mb-4 sm:mb-6 lg:mb-8 font-semibold text-[#979188]"
             style={{ fontFamily: 'Inter, sans-serif' }}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -115,19 +132,19 @@ export default function ProjectsSection() {
           </motion.p>
 
           <motion.h2
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black leading-tight"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black leading-tight mb-6 sm:mb-8 lg:mb-12"
             style={{ 
               fontFamily: 'Alexandria, sans-serif',
-              lineHeight: '1.2'
+              lineHeight: '1.1',
+              fontWeight: '900'
             }}
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            WE SAW THE
-            <br />
-            OPPORTUNITY TO 
+            <span className="block mb-2 sm:mb-3 lg:mb-4">WE SAW THE</span>
+            <span className="block">OPPORTUNITY TO</span>
           </motion.h2>
 
           <motion.div
@@ -163,6 +180,7 @@ export default function ProjectsSection() {
                 range={[index / projects.length, (index + 1) / projects.length]}
                 totalProjects={projects.length}
                 isMobile={isMobile}
+                isPreloaded={imagesLoaded.has(project.id)}
               />
             </div>
           ))}
@@ -172,7 +190,8 @@ export default function ProjectsSection() {
   );
 }
 
-function ProjectCard({ project, index, progress, range, totalProjects, isMobile }: ProjectCardProps) {
+function ProjectCard({ project, index, progress, range, totalProjects, isMobile, isPreloaded = false }: ProjectCardProps) {
+  const [imageLoaded, setImageLoaded] = useState(isPreloaded);
   const isLast = index === totalProjects - 1;
   const isFirst = index === 0;
   const isEven = index % 2 === 0;
@@ -218,13 +237,6 @@ function ProjectCard({ project, index, progress, range, totalProjects, isMobile 
     damping: isMobile ? 40 : 30 
   });
 
-  const splitText = (text: string) => {
-    return text.split(' ').map((word, i) => ({
-      word: word,
-      index: i
-    }));
-  };
-
   return (
     <motion.div
       className="relative flex items-center justify-center px-4 sm:px-6 lg:px-8 py-8 sm:py-12 min-h-screen w-full"
@@ -244,11 +256,24 @@ function ProjectCard({ project, index, progress, range, totalProjects, isMobile 
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: isMobile ? 0.5 : 0.8, ease: "easeOut" }}
           >
+            {/* Loading Placeholder */}
+            {!imageLoaded && (
+              <div className="absolute inset-0 bg-gradient-to-br from-gray-200 to-gray-300 animate-pulse" />
+            )}
+            
             <img
               src={project.image}
               alt={project.title}
-              className="w-full h-full object-cover"
-              loading="lazy"
+              className={`w-full h-full object-cover transition-opacity duration-500 ${
+                imageLoaded ? 'opacity-100' : 'opacity-0'
+              }`}
+              loading={index < 2 ? 'eager' : 'lazy'}
+              decoding="async"
+              onLoad={() => setImageLoaded(true)}
+              style={{ 
+                contentVisibility: 'auto',
+                willChange: 'transform'
+              }}
             />
             
             <motion.div

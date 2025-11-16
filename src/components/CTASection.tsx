@@ -43,7 +43,7 @@ export default function CTASection() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: false }}
                 transition={{ duration: 1, delay: 0.3, ease: [0.43, 0.13, 0.23, 0.96] }}
-className="text-5xl lg:text-7xl font-bold text-[#000000] mb-4 leading-snug sm:leading-relaxed break-words"
+                className="text-5xl lg:text-7xl font-bold text-[#000000] mb-6 lg:mb-8 leading-tight break-words"
               >
                 جاهز لتحويل
               </motion.div>
@@ -53,10 +53,10 @@ className="text-5xl lg:text-7xl font-bold text-[#000000] mb-4 leading-snug sm:le
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: false }}
                 transition={{ duration: 1, delay: 0.5, ease: [0.43, 0.13, 0.23, 0.96] }}
-                className="text-5xl lg:text-7xl font-bold text-[#000000]"
+                className="text-5xl lg:text-7xl font-bold text-[#000000] leading-tight"
               >
                 <motion.span 
-                  className="text-[#979188] m-10"
+                  className="text-[#979188] mx-3 lg:mx-6"
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: false }}
@@ -64,8 +64,7 @@ className="text-5xl lg:text-7xl font-bold text-[#000000] mb-4 leading-snug sm:le
                 >
                   رؤيتك
                 </motion.span>{' '}
-                إلى
-                 واقع؟
+                إلى واقع؟
               </motion.div>
             </div>
 
@@ -176,13 +175,13 @@ className="text-5xl lg:text-7xl font-bold text-[#000000] mb-4 leading-snug sm:le
                 transition={{ duration: 1.2, ease: "easeOut" }}
                 className="w-full h-full"
               >
-<motion.img
-  src="/imags/Logo.png"
-  alt="Sadif Projects"
-  className="w-full h-full object-contain lg:object-cover"
-  whileHover={{ scale: 1.1 }}
-  transition={{ duration: 0.8, ease: "easeOut" }}
-/>
+                <motion.img
+                  src="/imags/Logo.png"
+                  alt="Sadif Projects"
+                  className="w-full h-full object-contain lg:object-cover"
+                  whileHover={{ scale: 1.1 }}
+                  transition={{ duration: 0.8, ease: "easeOut" }}
+                />
               </motion.div>
               
               {/* Overlay */}

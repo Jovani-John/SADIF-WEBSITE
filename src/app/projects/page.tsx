@@ -18,7 +18,6 @@ export default function ProjectsPage() {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [searchTerm, setSearchTerm] = useState('');
   const [showFilter, setShowFilter] = useState(false);
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   // Filter projects
   const filteredProjects = projects.filter(project => {
@@ -140,86 +139,93 @@ export default function ProjectsPage() {
               <p className="text-xl sm:text-2xl text-[#979188]" style={{ fontFamily: 'Alexandria, sans-serif' }}>لا توجد مشاريع مطابقة للبحث</p>
             </motion.div>
           ) : (
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 max-w-7xl mx-auto">
-              {filteredProjects.map((project, index) => {
-                const layout = getProjectLayout(index);
-                const isEven = index % 2 === 0;
+            <>
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 max-w-7xl mx-auto">
+                {filteredProjects.map((project, index) => {
+                  const layout = getProjectLayout(index);
+                  const isEven = index % 2 === 0;
+                  const shouldLoadEager = index < 6; // First 6 projects load immediately
 
-                return (
-                  <motion.div
-                    key={project.id}
-                    initial={{ y: 50, opacity: 0, x: isEven ? -50 : 50 }}
-                    whileInView={{ y: 0, opacity: 1, x: 0 }}
-                    viewport={{ once: false, amount: 0.3 }}
-                    transition={{ duration: 0.8, delay: (index % 2) * 0.2, ease: [0.43, 0.13, 0.23, 0.96] }}
-                    className={`${layout.span} col-span-12`}
-                  >
-                    <Link href={`/projects/${project.id}`} scroll={false}>
-                      <motion.div
-                        whileHover={{ y: -5, scale: 1.01 }}
-                        transition={{ duration: 0.3 }}
-                        className={`group relative ${layout.height} overflow-hidden cursor-pointer`}
-                        style={{ transformStyle: 'preserve-3d', perspective: '1000px' }}
-                      >
-                        {/* Project Image */}
-                        <div className="absolute inset-0">
-                          <Image
-                            src={project.image}
-                            alt={project.title}
-                            fill
-                            className="object-cover transition-transform duration-700 group-hover:scale-105"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300" />
-                        </div>
+                  return (
+                    <motion.div
+                      key={project.id}
+                      initial={{ y: 50, opacity: 0, x: isEven ? -50 : 50 }}
+                      whileInView={{ y: 0, opacity: 1, x: 0 }}
+                      viewport={{ once: false, amount: 0.3 }}
+                      transition={{ duration: 0.8, delay: (index % 2) * 0.2, ease: [0.43, 0.13, 0.23, 0.96] }}
+                      className={`${layout.span} col-span-12`}
+                    >
+                      <Link href={`/projects/${project.id}`} scroll={false}>
+                        <motion.div
+                          whileHover={{ y: -5, scale: 1.01 }}
+                          transition={{ duration: 0.3 }}
+                          className={`group relative ${layout.height} overflow-hidden cursor-pointer`}
+                          style={{ transformStyle: 'preserve-3d', perspective: '1000px' }}
+                        >
+                          {/* Project Image */}
+                          <div className="absolute inset-0">
+                            <Image
+                              src={project.image}
+                              alt={project.title}
+                              fill
+                              className="object-cover transition-all duration-700 group-hover:scale-105"
+                              loading={shouldLoadEager ? 'eager' : 'lazy'}
+                              priority={shouldLoadEager}
+                              quality={shouldLoadEager ? 90 : 80}
+                              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300" />
+                          </div>
 
-                        {/* Project Info Overlay */}
-                        <div className="absolute inset-0 p-4 sm:p-6 md:p-8 flex flex-col justify-end">
-                          <motion.div initial={{ x: -20, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} transition={{ delay: 0.2 }} className="mb-3 sm:mb-4">
-                            <span className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-[#979188] text-white text-xs uppercase tracking-wider font-medium" style={{ fontFamily: 'Alexandria, sans-serif' }}>
-                              {project.categoryAr}
-                            </span>
-                          </motion.div>
+                          {/* Project Info Overlay */}
+                          <div className="absolute inset-0 p-4 sm:p-6 md:p-8 flex flex-col justify-end">
+                            <motion.div initial={{ x: -20, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} transition={{ delay: 0.2 }} className="mb-3 sm:mb-4">
+                              <span className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-[#979188] text-white text-xs uppercase tracking-wider font-medium" style={{ fontFamily: 'Alexandria, sans-serif' }}>
+                                {project.categoryAr}
+                              </span>
+                            </motion.div>
 
-                          <motion.h3
-                            initial={{ y: 20, opacity: 0 }}
-                            whileInView={{ y: 0, opacity: 1 }}
-                            transition={{ delay: 0.3 }}
-                            className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-2 group-hover:text-[#979188] transition-colors duration-300"
-                            style={{ fontFamily: 'Alexandria, sans-serif' }}
-                          >
-                            {project.title}
-                          </motion.h3>
+                            <motion.h3
+                              initial={{ y: 20, opacity: 0 }}
+                              whileInView={{ y: 0, opacity: 1 }}
+                              transition={{ delay: 0.3 }}
+                              className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-2 group-hover:text-[#979188] transition-colors duration-300"
+                              style={{ fontFamily: 'Alexandria, sans-serif' }}
+                            >
+                              {project.title}
+                            </motion.h3>
 
-                          <motion.p
-                            initial={{ y: 20, opacity: 0 }}
-                            whileInView={{ y: 0, opacity: 1 }}
-                            transition={{ delay: 0.35 }}
-                            className="text-sm sm:text-base md:text-lg text-[#ECE6E3] mb-2 sm:mb-3"
-                            style={{ fontFamily: 'Alexandria, sans-serif' }}
-                          >
-                            {project.titleEn}
-                          </motion.p>
+                            <motion.p
+                              initial={{ y: 20, opacity: 0 }}
+                              whileInView={{ y: 0, opacity: 1 }}
+                              transition={{ delay: 0.35 }}
+                              className="text-sm sm:text-base md:text-lg text-[#ECE6E3] mb-2 sm:mb-3"
+                              style={{ fontFamily: 'Alexandria, sans-serif' }}
+                            >
+                              {project.titleEn}
+                            </motion.p>
 
-                          <motion.div
-                            initial={{ y: 20, opacity: 0 }}
-                            whileInView={{ y: 0, opacity: 1 }}
-                            transition={{ delay: 0.4 }}
-                            className="flex items-center gap-3 sm:gap-4 text-xs sm:text-sm text-[#ECE6E3]"
-                            style={{ fontFamily: 'Alexandria, sans-serif' }}
-                          >
-                            <span>{project.city}</span>
-                            <span className="w-1 h-1 bg-[#979188] rounded-full"></span>
-                            <span>{project.year}</span>
-                          </motion.div>
+                            <motion.div
+                              initial={{ y: 20, opacity: 0 }}
+                              whileInView={{ y: 0, opacity: 1 }}
+                              transition={{ delay: 0.4 }}
+                              className="flex items-center gap-3 sm:gap-4 text-xs sm:text-sm text-[#ECE6E3]"
+                              style={{ fontFamily: 'Alexandria, sans-serif' }}
+                            >
+                              <span>{project.city}</span>
+                              <span className="w-1 h-1 bg-[#979188] rounded-full"></span>
+                              <span>{project.year}</span>
+                            </motion.div>
 
-                          <motion.div initial={{ width: 0 }} whileHover={{ width: '60px' }} className="h-0.5 bg-[#979188] mt-3 sm:mt-4" />
-                        </div>
-                      </motion.div>
-                    </Link>
-                  </motion.div>
-                );
-              })}
-            </div>
+                            <motion.div initial={{ width: 0 }} whileHover={{ width: '60px' }} className="h-0.5 bg-[#979188] mt-3 sm:mt-4" />
+                          </div>
+                        </motion.div>
+                      </Link>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </>
           )}
         </div>
       </section>

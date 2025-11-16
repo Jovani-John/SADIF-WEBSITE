@@ -12,8 +12,8 @@ const COMPANY_INFO = {
 };
 
 const SOCIAL_LINKS = {
-  instagram: "https://instagram.com",
-  tiktok: "https://tiktok.com",
+  instagram: "https://www.instagram.com/sadif.co/",
+  tiktok: "https://www.tiktok.com/@sadif510?is_from_webapp=1&sender_device=pc",
   whatsapp: "https://wa.me/966559698683",
 };
 

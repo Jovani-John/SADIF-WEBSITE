@@ -1,7 +1,7 @@
 // src/app/projects/[id]/page.tsx
 'use client';
 
-import { use, useState } from 'react';
+import { use, useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { notFound, useRouter } from 'next/navigation';
 import Image from 'next/image';
@@ -18,6 +18,8 @@ export default function ProjectDetailPage({ params }: PageProps) {
   const { id } = use(params);
   const project = projects.find((p) => p.id === id);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [loadedImages, setLoadedImages] = useState<Set<string>>(new Set());
+  const [visibleImages, setVisibleImages] = useState(4); // Load 4 images initially
 
   if (!project) {
     notFound();
@@ -27,6 +29,51 @@ export default function ProjectDetailPage({ params }: PageProps) {
   const relatedProjects = projects
     .filter(p => p.category === project.category && p.id !== project.id)
     .slice(0, 3);
+
+  // Preload hero image and first 2 gallery images
+  useEffect(() => {
+    const preloadImages = () => {
+      // Hero image
+      const heroImg = new window.Image();
+      heroImg.src = project.image;
+      heroImg.onload = () => {
+        setLoadedImages(prev => new Set(prev).add('hero'));
+      };
+
+      // First 2 gallery images
+      project.images.slice(0, 2).forEach((img, index) => {
+        const galleryImg = new window.Image();
+        galleryImg.src = img;
+        galleryImg.onload = () => {
+          setLoadedImages(prev => new Set(prev).add(`gallery-${index}`));
+        };
+      });
+    };
+    preloadImages();
+  }, [project]);
+
+  // Load more images on scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      if (
+        window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 1500 &&
+        visibleImages < project.images.length
+      ) {
+        setVisibleImages(prev => Math.min(prev + 4, project.images.length));
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [visibleImages, project.images.length]);
+
+  // Image load handler
+  const handleImageLoad = useCallback((imageKey: string) => {
+    setLoadedImages(prev => new Set(prev).add(imageKey));
+  }, []);
+
+  // Get visible gallery images
+  const displayedImages = project.images.slice(0, visibleImages);
 
   return (
     <motion.main 
@@ -51,6 +98,11 @@ export default function ProjectDetailPage({ params }: PageProps) {
             perspective: '1000px'
           }}
         >
+          {/* Loading Placeholder for Hero */}
+          {!loadedImages.has('hero') && (
+            <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900 animate-pulse" />
+          )}
+
           <motion.div
             initial={{ scale: 1.2 }}
             animate={{ scale: 1 }}
@@ -65,8 +117,13 @@ export default function ProjectDetailPage({ params }: PageProps) {
               src={project.image}
               alt={project.title}
               fill
-              className="object-cover"
+              className={`object-cover transition-opacity duration-500 ${
+                loadedImages.has('hero') ? 'opacity-100' : 'opacity-0'
+              }`}
               priority
+              quality={90}
+              sizes="100vw"
+              onLoad={() => handleImageLoad('hero')}
             />
           </motion.div>
           
@@ -315,10 +372,11 @@ export default function ProjectDetailPage({ params }: PageProps) {
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-                {project.images.map((img, index) => {
-                  // تحديد حجم كل صورة بشكل مختلف
+                {displayedImages.map((img, index) => {
                   const isLarge = index % 3 === 0;
                   const isMedium = index % 3 === 1;
+                  const isPriority = index < 2;
+                  const imageKey = `gallery-${index}`;
                   
                   return (
                     <motion.div
@@ -331,7 +389,7 @@ export default function ProjectDetailPage({ params }: PageProps) {
                         x: 0, 
                         opacity: 1 
                       }}
-                      viewport={{ once: false, amount: 0.3 }}
+                      viewport={{ once: true, amount: 0.2 }}
                       transition={{ 
                         duration: 0.8,
                         delay: (index % 2) * 0.2,
@@ -351,11 +409,23 @@ export default function ProjectDetailPage({ params }: PageProps) {
                         perspective: '1000px'
                       }}
                     >
+                      {/* Loading Placeholder */}
+                      {!loadedImages.has(imageKey) && (
+                        <div className="absolute inset-0 bg-gradient-to-br from-gray-200 to-gray-300 animate-pulse" />
+                      )}
+
                       <Image
                         src={img}
                         alt={`${project.title} - ${index + 1}`}
                         fill
-                        className="object-cover transition-transform duration-700"
+                        className={`object-cover transition-all duration-700 ${
+                          loadedImages.has(imageKey) ? 'opacity-100' : 'opacity-0'
+                        }`}
+                        loading={isPriority ? 'eager' : 'lazy'}
+                        priority={isPriority}
+                        quality={isPriority ? 85 : 75}
+                        sizes="(max-width: 640px) 100vw, 50vw"
+                        onLoad={() => handleImageLoad(imageKey)}
                       />
                       <motion.div
                         initial={{ opacity: 0 }}
@@ -375,6 +445,22 @@ export default function ProjectDetailPage({ params }: PageProps) {
                   );
                 })}
               </div>
+
+              {/* Load More Indicator */}
+              {visibleImages < project.images.length && (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="text-center mt-8 sm:mt-12"
+                >
+                  <div className="inline-flex items-center gap-3 px-6 py-3 bg-white rounded-full shadow-lg">
+                    <div className="w-2 h-2 bg-[#979188] rounded-full animate-pulse" />
+                    <span className="text-sm text-[#979188]" style={{ fontFamily: 'Alexandria, sans-serif' }}>
+                      جاري تحميل المزيد من الصور...
+                    </span>
+                  </div>
+                </motion.div>
+              )}
             </motion.div>
           </div>
         </div>
@@ -428,7 +514,7 @@ export default function ProjectDetailPage({ params }: PageProps) {
                     ease: [0.43, 0.13, 0.23, 0.96]
                   }}
                 >
-                  <Link href={`/projects/${relatedProject.id}`} scroll={false}>
+                  <Link href={`/projects/${relatedProject.id}`} scroll={false} prefetch={false}>
                     <motion.div
                       whileHover={{ y: -10, scale: 1.03 }}
                       transition={{ duration: 0.4 }}
@@ -438,7 +524,10 @@ export default function ProjectDetailPage({ params }: PageProps) {
                         src={relatedProject.image}
                         alt={relatedProject.title}
                         fill
-                        className="object-cover transition-transform duration-700 group-hover:scale-120"
+                        className="object-cover transition-transform duration-700 group-hover:scale-110"
+                        loading="lazy"
+                        quality={75}
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
                       
@@ -519,6 +608,8 @@ export default function ProjectDetailPage({ params }: PageProps) {
                 fill
                 className="object-contain rounded-xl sm:rounded-2xl"
                 priority
+                quality={95}
+                sizes="100vw"
               />
             </motion.div>
 
