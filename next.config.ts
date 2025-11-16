@@ -1,5 +1,18 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // تفعيل ضغط الاستجابات
+  compress: true,
+  
+  // React Strict Mode
+  reactStrictMode: true,
+
+  // استخدام SWC للضغط (أسرع من Terser)
+  swcMinify: true,
+  
+  // إيقاف source maps في الإنتاج للسرعة
+  productionBrowserSourceMaps: false,
+
+  // تحسينات الصور
   images: {
     remotePatterns: [
       {
@@ -9,10 +22,33 @@ const nextConfig = {
         pathname: '/**',
       },
     ],
+    // استخدام WebP و AVIF للحجم الأصغر
     formats: ['image/webp', 'image/avif'],
+    // أحجام الأجهزة المختلفة
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    // Cache الصور لمدة دقيقة
+    minimumCacheTTL: 60,
+    // تفعيل SVG
+    dangerouslyAllowSVG: true,
+    contentDispositionType: 'attachment',
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
+
+  // Headers للأمان والتخزين المؤقت
   async headers() {
     return [
+      // Headers للصور (Cache طويل)
+      {
+        source: '/imags/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable', // Cache لمدة سنة
+          },
+        ],
+      },
+      // Headers عامة
       {
         source: '/(.*)',
         headers: [
@@ -43,12 +79,19 @@ const nextConfig = {
             key: 'Strict-Transport-Security',
             value: 'max-age=31536000; includeSubDomains',
           },
+          {
+            key: 'X-DNS-Prefetch-Control',
+            value: 'on',
+          },
         ],
       },
     ];
   },
+
+  // Experimental features للأداء الأفضل
   experimental: {
-    optimizeCss: true,
+    optimizeCss: true, // تحسين CSS
+    optimizePackageImports: ['framer-motion', 'react-icons', 'leaflet'], // تحسين استيراد المكتبات الكبيرة
   },
 };
 

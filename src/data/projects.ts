@@ -48,7 +48,6 @@ export const projects: Project[] = [
     detailsEn: 'A luxury villa project combining traditional and modern Saudi architectural design',
     area: '1200 م²',
     client: 'عميل خاص',
-
   },
   {
     id: '2',
