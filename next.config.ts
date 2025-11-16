@@ -5,9 +5,6 @@ const nextConfig = {
   
   // React Strict Mode
   reactStrictMode: true,
-
-  // استخدام SWC للضغط (أسرع من Terser)
-  swcMinify: true,
   
   // إيقاف source maps في الإنتاج للسرعة
   productionBrowserSourceMaps: false,
