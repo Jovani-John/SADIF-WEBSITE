@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, useMotionValue, useSpring } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import Image from 'next/image';
 
@@ -19,17 +19,46 @@ const brands = [
 ];
 
 export default function BrandsSlider() {
-  const constraintsRef = useRef(null);
+  const constraintsRef = useRef<HTMLDivElement>(null);
+  const sliderRef = useRef<HTMLDivElement>(null);
   const x = useMotionValue(0);
   const t = useTranslations('Brands');
   const locale = useLocale();
   const isRTL = locale === 'ar';
+  const [isMobile, setIsMobile] = useState(false);
   
   const springX = useSpring(x, {
     stiffness: 120,
     damping: 30,
     mass: 0.8
   });
+
+  // كشف حجم الشاشة
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // إصلاح حدود السحب
+  useEffect(() => {
+    if (constraintsRef.current && sliderRef.current) {
+      const constraintsWidth = constraintsRef.current.offsetWidth;
+      const sliderWidth = sliderRef.current.scrollWidth;
+      
+      // حساب الحدود الصحيحة للسحب
+      const dragConstraints = {
+        left: -(sliderWidth - constraintsWidth),
+        right: 0
+      };
+
+      // تطبيق الحدود بناءً على اتجاه اللغة
+      if (isRTL) {
+        springX.set(0); // إعادة التعيين للاتجاه RTL
+      }
+    }
+  }, [isRTL, springX]);
 
   return (
     <section 
@@ -77,15 +106,28 @@ export default function BrandsSlider() {
         </motion.div>
       </div>
 
-      {/* Draggable Slider */}
+      {/* Draggable Slider - معدل */}
       <div 
-        className="relative w-full overflow-hidden" 
+        className="relative w-full overflow-x-auto" // تغيير من overflow-hidden إلى overflow-x-auto
         ref={constraintsRef}
         role="region"
         aria-label="Brands carousel"
+        style={{ 
+          WebkitOverflowScrolling: 'touch', // للسكرول السلس على iOS
+          scrollbarWidth: 'none', // إخفاء السكرول بار في Firefox
+          msOverflowStyle: 'none' // إخفاء السكرول بار في IE
+        }}
       >
+        {/* إخفاء السكرول بار في Chrome/Safari */}
+        <style jsx>{`
+          div::-webkit-scrollbar {
+            display: none;
+          }
+        `}</style>
+
         <motion.div
-          drag="x"
+          ref={sliderRef}
+          drag={isMobile ? "x" : false} // تفعيل السحب فقط على الموبايل
           dragConstraints={constraintsRef}
           dragElastic={0.1}
           dragMomentum={true}
@@ -96,11 +138,11 @@ export default function BrandsSlider() {
             bounceDamping: 15
           }}
           style={{ 
-            x: springX,
+            x: isMobile ? springX : 0, // استخدام motion فقط على الموبايل
             width: 'max-content',
-            touchAction: 'pan-y'
+            touchAction: isMobile ? 'pan-x' : 'auto'
           }}
-          className="flex gap-8 sm:gap-12 md:gap-16 items-center cursor-grab active:cursor-grabbing select-none"
+          className="flex gap-8 sm:gap-12 md:gap-16 items-center px-4" // إضافة padding للجوانب
           whileTap={{ cursor: 'grabbing' }}
         >
           {brands.map((brand, index) => (
@@ -117,7 +159,7 @@ export default function BrandsSlider() {
                 alt={brand.alt}
                 width={144}
                 height={96}
-                className="max-w-full max-h-full object-contain transition-all duration-200"
+                className="max-w-full max-h-full object-contain transition-all duration-200 hover:filter hover:brightness-110"
                 draggable="false"
                 loading={index < 5 ? "eager" : "lazy"}
                 quality={75}
@@ -131,18 +173,18 @@ export default function BrandsSlider() {
           ))}
         </motion.div>
 
-        {/* Gradient Overlays على الجوانب */}
+        {/* Gradient Overlays - معدل */}
         <div 
-          className={`absolute ${isRTL ? 'right-0' : 'left-0'} top-0 bottom-0 w-12 sm:w-16 md:w-24 bg-gradient-to-${isRTL ? 'l' : 'r'} from-white via-white/80 to-transparent pointer-events-none z-10`}
+          className={`absolute ${isRTL ? 'right-0' : 'left-0'} top-0 bottom-0 w-12 sm:w-16 md:w-24 bg-gradient-to-${isRTL ? 'l' : 'r'} from-white via-white/90 to-transparent pointer-events-none z-10`}
           aria-hidden="true"
         />
         <div 
-          className={`absolute ${isRTL ? 'left-0' : 'right-0'} top-0 bottom-0 w-12 sm:w-16 md:w-24 bg-gradient-to-${isRTL ? 'r' : 'l'} from-white via-white/80 to-transparent pointer-events-none z-10`}
+          className={`absolute ${isRTL ? 'left-0' : 'right-0'} top-0 bottom-0 w-12 sm:w-16 md:w-24 bg-gradient-to-${isRTL ? 'r' : 'l'} from-white via-white/90 to-transparent pointer-events-none z-10`}
           aria-hidden="true"
         />
       </div>
 
-      {/* Scroll Indicator */}
+      {/* Scroll Indicator - معدل */}
       <div className="text-center mt-6 sm:mt-8">
         <motion.div
           animate={{ x: isRTL ? [-8, 0, -8] : [0, 8, 0] }}
@@ -151,7 +193,17 @@ export default function BrandsSlider() {
           style={{ fontFamily: 'Alexandria, sans-serif' }}
           aria-label={t('scrollHint')}
         >
-          <span>{t('scrollHint')}</span>
+          <span>{isMobile ? t('dragHint') : t('scrollHint')}</span>
+          <svg 
+            width="16" 
+            height="16" 
+            viewBox="0 0 24 24" 
+            fill="none" 
+            stroke="currentColor" 
+            className={`transform ${isRTL ? 'rotate-180' : ''}`}
+          >
+            <path d="M5 12h14M12 5l7 7-7 7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
         </motion.div>
       </div>
     </section>
