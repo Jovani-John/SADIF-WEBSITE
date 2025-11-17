@@ -1,13 +1,16 @@
 'use client';
 import { motion, useInView } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
+import { useTranslations } from 'next-intl';
 
 export default function StatsSection() {
+  const t = useTranslations('Stats');
+  
   const stats = [
-    { number: 50, label: "مشروع منجز", suffix: "+" },
-    { number: 30, label: "عميل راضٍ", suffix: "+" },
-    { number: 10, label: "سنوات خبرة", suffix: "+" },
-    { number: 100, label: "نسبة الرضا", suffix: "%" },
+    { number: 50, key: "projects", suffix: "+" },
+    { number: 30, key: "clients", suffix: "+" },
+    { number: 10, key: "experience", suffix: "+" },
+    { number: 100, key: "satisfaction", suffix: "%" },
   ];
 
   interface CounterProps {
@@ -15,9 +18,9 @@ export default function StatsSection() {
     duration?: number;
   }
 
-  const Counter = ({ end, duration = 2 }: CounterProps) => {
+  const Counter = ({ end, duration = 1.5 }: CounterProps) => {
     const ref = useRef<HTMLSpanElement | null>(null);
-    const isInView = useInView(ref, { once: true });
+    const isInView = useInView(ref, { once: true, margin: "-50px" });
     const [count, setCount] = useState(0);
 
     useEffect(() => {
@@ -45,30 +48,30 @@ export default function StatsSection() {
   };
 
   return (
-    <section className="py-16 bg-[#ECE6E3] relative overflow-hidden">
-      <div className="container mx-auto px-6">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+    <section className="py-12 bg-[#ECE6E3] relative overflow-hidden" aria-labelledby="stats-heading">
+      <div className="container mx-auto px-4 sm:px-6">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
           {stats.map((stat, i) => (
             <motion.div
               key={i}
               initial={{ scale: 0, rotate: -180 }}
               whileInView={{ scale: 1, rotate: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1, type: "spring" }}
-              whileHover={{ scale: 1.1, y: -10 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ delay: i * 0.08, type: "spring" }}
+              whileHover={{ scale: 1.05, y: -5 }}
               className="text-center relative group"
             >
-              <div className="absolute inset-0 bg-white rounded-3xl transform rotate-6 group-hover:rotate-12 transition-transform opacity-50" />
-              <div className="relative bg-white rounded-3xl p-8 shadow-lg">
+              <div className="absolute inset-0 bg-white rounded-2xl transform rotate-3 group-hover:rotate-6 transition-transform opacity-40" />
+              <div className="relative bg-white rounded-2xl p-6 shadow-md">
                 <motion.div
-                  whileHover={{ scale: 1.2 }}
-                  className="text-5xl md:text-6xl font-bold text-[#000000] mb-2"
+                  whileHover={{ scale: 1.1 }}
+                  className="text-3xl sm:text-4xl font-bold text-[#000000] mb-1"
                 >
                   <Counter end={stat.number} />
                   {stat.suffix}
                 </motion.div>
 
-                <p className="text-[#979188] font-medium">{stat.label}</p>
+                <p className="text-[#979188] font-medium text-sm">{t(stat.key)}</p>
               </div>
             </motion.div>
           ))}

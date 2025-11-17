@@ -1,0 +1,299 @@
+{
+  "Navbar": {
+    "projects": "Projects",
+    "about": "About Us",
+    "contact": "Contact",
+    "search": "Search",
+    "companyName": "SADIF Engineering Consultancy"
+  },
+  "Hero": {
+    "text1": "We Design The Future",
+    "text2": "Creative & Sustainable Solutions",
+    "text3": "Blending Beauty with Function",
+    "text4": "For Saudi Cultural Identity",
+    "contactBtn": "Contact Us",
+    "projectsBtn": "Our Projects"
+  },
+  "About": {
+    "title": "About Us",
+    "subtitle": "SADIF Consulting",
+    "description": "We are an emerging Saudi engineering consultancy firm, dedicated to transforming the fields of architecture, interior design, and landscape design in the Kingdom. Our team consists of experienced architects, designers, and consultants who deliver world-class solutions that blend creativity with practical functionality.",
+    "stats": {
+      "projects": "Completed Projects",
+      "clients": "Satisfied Clients",
+      "experience": "Years Experience"
+    },
+    "vision": {
+      "title": "Our Vision",
+      "subtitle": "Our Vision",
+      "description": "To be the leading consulting firm in Saudi Arabia, known for delivering innovative architectural, interior, and landscape designs that blend creativity, sustainability, and cultural identity. We aspire to create spaces that enhance people's lives and shape the future of design in the Kingdom."
+    },
+    "values": {
+      "title": "Our Values",
+      "subtitle": "Our Values",
+      "creativity": {
+        "title": "Creativity",
+        "desc": "We innovate unique design solutions that exceed expectations"
+      },
+      "sustainability": {
+        "title": "Sustainability",
+        "desc": "We commit to eco-friendly and sustainable designs"
+      },
+      "identity": {
+        "title": "Cultural Identity",
+        "desc": "We respect and reflect Saudi identity in every design"
+      },
+      "quality": {
+        "title": "Quality",
+        "desc": "We strive for excellence and professionalism in every project"
+      }
+    },
+    "ctaButton": "Learn More About Us"
+  },
+  "WhyChooseUs": {
+    "title": "Why Choose Us",
+    "subtitle": "Why Choose Us",
+    "reasons": {
+      "vision": {
+        "title": "Creative Vision",
+        "titleEn": "Creative Vision",
+        "desc": "We blend artistic sense with practical solutions to create spaces that combine beauty and function"
+      },
+      "team": {
+        "title": "Expert Team",
+        "titleEn": "Expert Team",
+        "desc": "Our team consists of experienced architects, interior designers, and landscape design experts"
+      },
+      "client": {
+        "title": "Client-Centric Approach",
+        "titleEn": "Client-Centric",
+        "desc": "We work closely with each client to customize our designs to meet their unique needs and goals"
+      },
+      "sustainability": {
+        "title": "Sustainability",
+        "titleEn": "Sustainability",
+        "desc": "Our designs prioritize environmental sustainability, using eco-friendly materials and energy-efficient solutions"
+      },
+      "detail": {
+        "title": "Attention to Detail",
+        "titleEn": "Attention to Detail",
+        "desc": "We care about every aspect of the design, ensuring that each project exceeds expectations"
+      }
+    }
+  },
+  "ProjectsSection": {
+    "title": "WE SAW THE OPPORTUNITY TO",
+    "subtitle": "OUR PROJECTS",
+    "allProjects": "All Projects",
+    "items": {
+      "project1": {
+        "title": "Shopping Mall in Tabuk",
+        "subtitle": "Shopping Mall",
+"titleEn": "TURN A SPACE INTO A SHOPPING DESTINATION",
+"subtitleEn": "Shopping Mall in Tabuk"
+
+      },
+      "project2": {
+        "title": "Contemporary Residential Villa",
+        "subtitle": "Riyadh, Saudi Arabia",
+        "titleEn": "CONTEMPORARY RESIDENTIAL VILLA",
+        "subtitleEn": "RIYADH, SAUDI ARABIA"
+      },
+      "project3": {
+        "title": "Luxury Interior Design",
+        "subtitle": "Executive Office",
+        "titleEn": "LUXURY INTERIOR DESIGN",
+        "subtitleEn": "EXECUTIVE OFFICE"
+      },
+      "project4": {
+        "title": "Sustainable Landscape Design",
+        "subtitle": "Tourist Resort",
+        "titleEn": "SUSTAINABLE LANDSCAPE DESIGN",
+        "subtitleEn": "TOURIST RESORT"
+      }
+    }
+  },
+  "ProjectsPage": {
+    "pageTitle": "Featured Projects",
+    "filter": {
+      "title": "FILTER",
+      "searchPlaceholder": "Search for a project...",
+      "searchLabel": "Search by Name",
+      "categoryLabel": "Category",
+      "clearFilters": "Clear Filters"
+    },
+    "noProjects": "No projects match your search",
+    "categories": {
+      "all": {
+        "nameAr": "الكل",
+        "nameEn": "All"
+      },
+      "architectural": {
+        "nameAr": "التصميم المعماري",
+        "nameEn": "Architectural Design"
+      },
+      "interior": {
+        "nameAr": "التصميم الداخلي",
+        "nameEn": "Interior Design"
+      },
+      "landscape": {
+        "nameAr": "تصميم الحدائق",
+        "nameEn": "Landscape Design"
+      }
+    }
+  },
+  "CTA": {
+    "tag": "Let's Create Together",
+    "title1": "Ready to Transform",
+    "title2": "Your Vision",
+    "title3": "Into Reality?",
+    "subtitle": "Let us turn your ideas into exceptional designs that blend beauty, function, and cultural identity.",
+    "startBtn": "Start Your Project Now",
+    "exploreBtn": "Explore Our Work",
+    "haveProject": "Have a Project?",
+    "helpYou": "We're here to help you achieve your vision",
+    "contactNow": "Contact Us Now"
+  },
+  "Brands": {
+    "title": "We've worked with",
+    "subtitle": "Trusted Partners - Scroll to View More",
+    "scrollHint": "← Scroll Left & Right →"
+  },
+  "Testimonials": {
+    "title": "Client Testimonials",
+    "subtitle": "Real Voices, Real Trust",
+    "description": "Real opinions from our clients reflecting",
+    "quality": "the quality of our services and commitment to excellence",
+    "realChat": "Real Conversation",
+    "quote": "Our clients' opinions reflect their trust in the quality of our services and our commitment to achieving their engineering dreams",
+    "projects": {
+      "project1": "Material & Color Selection Consultation",
+      "project2": "Interior Design",
+      "project3": "Engineering Consultancy"
+    }
+  },
+  "Achievements": {
+    "title": "Our Achievements",
+    "subtitle": "Our Achievements",
+    "services": {
+      "architecture": {
+        "titleAr": "Architectural Design",
+        "titleEn": "Architectural Design",
+        "desc": "Creating functional, aesthetic, and innovative architectural designs for residential, commercial, and public buildings"
+      },
+      "interior": {
+        "titleAr": "Interior Design",
+        "titleEn": "Interior Design",
+        "desc": "Providing interior design solutions that optimize spaces and enhance aesthetics"
+      },
+      "landscape": {
+        "titleAr": "Landscape Design",
+        "titleEn": "Landscape Design",
+        "desc": "Designing outdoor spaces that seamlessly integrate with the environment while promoting sustainability"
+      }
+    },
+    "completedProjects": "Completed over 20 projects in each field",
+    "completedProjectsEn": "Completed over 20 projects in each field"
+  },
+  "Footer": {
+    "company": "SADIF",
+    "address": "8th Floor, Eastern Chamber Tower, Dammam, Saudi Arabia",
+    "phone": "+966-559-033-519",
+    "email": "info@sadif.sa",
+    "vision": "We are an emerging Saudi engineering consultancy firm, dedicated to transforming the fields of architecture, interior design, and landscape design in the Kingdom.",
+    "quickLinks": "Quick Links",
+    "contactInfo": "Contact Information",
+    "followUs": "Follow us on social media to stay updated with our latest projects and services",
+    "haveProject": "Have a Project?",
+    "helpYou": "We're here to help you achieve your vision",
+    "contactNow": "Contact Us Now",
+    "rights": "© {year} SADIF Company. All Rights Reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms & Conditions",
+    "officeAddress": "Our Office Address",
+    "ourPhone": "Our Phone",
+    "ourEmail": "Email",
+    "links": {
+      "home": "Home",
+      "about": "About Us",
+      "services": "Our Services",
+      "projects": "Our Projects",
+      "blog": "Blog",
+      "contact": "Contact Us"
+    }
+  },
+  "Contact": {
+    "title": "Contact Us",
+    "heroTitle": "Stay in Touch With Us",
+    "subtitle": "Contact us today and get answers to building prices suitable for setting budgets",
+    "form": {
+      "name": "Your Name",
+      "email": "Your Email",
+      "subject": "Subject",
+      "phone": "Phone Number (Optional)",
+      "message": "Your Message (Optional)",
+      "submit": "Send"
+    },
+    "contactInfo": {
+      "title": "Contact Us",
+      "phone": "Phone",
+      "email": "Email",
+      "address": "8th floor, Asharqia Chamber Tower, Dammam, Saudi Arabia"
+    },
+    "toast": {
+      "success": "Your message has been sent successfully! We'll contact you soon 🎉",
+      "error": "Please fill in all required fields!"
+    },
+    "mapPopup": "8th floor, Asharqia Chamber Tower, Dammam, Saudi Arabia"
+  },
+  "ProjectDetail": {
+    "back": "Back",
+    "description": "Project Overview",
+    "projectDetails": "Project Details",
+    "client": "Client",
+    "gallery": "Photo Gallery",
+    "loadingMore": "Loading more images...",
+    "relatedProjects": "Related Projects",
+    "closeModal": "Click anywhere to close",
+    "meta": {
+      "location": "Location",
+      "year": "Year",
+      "area": "Area"
+    }
+  },
+  "HeroAbout": {
+    "title": "SADIF",
+    "subtitle": "An emerging Saudi engineering consultancy firm transforming your architectural dreams into stunning reality",
+    "discoverBtn": "Discover More"
+  },
+  "Story": {
+    "title": "Our Story",
+    "description1": "We are an emerging Saudi engineering consultancy firm, dedicated to transforming the fields of architecture, interior design, and landscape design in the Kingdom.",
+    "description2": "Our team consists of experienced architects, designers, and consultants who deliver world-class solutions that blend creativity with practical functionality.",
+    "projectsCount": "+20",
+    "projectsText": "Projects",
+    "features": {
+      "excellence": "Design Excellence",
+      "professional": "Professional Team",
+      "growth": "Sustainable Growth",
+      "vision": "Clear Vision"
+    }
+  },
+  "VisionMission": {
+    "title": "Vision & Mission",
+    "vision": {
+      "title": "Our Vision",
+      "description": "To be the leading consulting firm in Saudi Arabia, known for delivering innovative architectural, interior, and landscape designs that blend creativity, sustainability, and cultural identity. We aspire to create spaces that enhance people's lives and shape the future of design in the Kingdom."
+    },
+    "mission": {
+      "title": "Our Mission",
+      "description": "To deliver high-quality, innovative, and sustainable design solutions that meet our clients' needs and exceed their expectations, while preserving Saudi cultural identity and maintaining the highest standards of quality and professionalism in every project."
+    }
+  },
+  "Stats": {
+    "projects": "Completed Projects",
+    "clients": "Satisfied Clients",
+    "experience": "Years Experience",
+    "satisfaction": "Satisfaction Rate"
+  }
+}

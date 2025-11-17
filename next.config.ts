@@ -1,3 +1,7 @@
+import createNextIntlPlugin from 'next-intl/plugin';
+
+const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // تفعيل ضغط الاستجابات
@@ -11,41 +15,34 @@ const nextConfig = {
 
   // تحسينات الصور
   images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'example.com', // استبدل بـ domain الصور إذا كان خارجياً
-        port: '',
-        pathname: '/**',
-      },
-    ],
-    // استخدام WebP و AVIF للحجم الأصغر
-    formats: ['image/webp', 'image/avif'],
-    // أحجام الأجهزة المختلفة
+remotePatterns: [
+  {
+    protocol: 'https' as const,
+    hostname: 'example.com',
+    pathname: '/**',
+  },
+],
+    // formats: ['image/webp', 'image/avif'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-    // Cache الصور لمدة دقيقة
     minimumCacheTTL: 60,
-    // تفعيل SVG
     dangerouslyAllowSVG: true,
-    contentDispositionType: 'attachment',
+    contentDispositionType: 'attachment' as const,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
 
   // Headers للأمان والتخزين المؤقت
   async headers() {
     return [
-      // Headers للصور (Cache طويل)
       {
         source: '/imags/:path*',
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable', // Cache لمدة سنة
+            value: 'public, max-age=31536000, immutable',
           },
         ],
       },
-      // Headers عامة
       {
         source: '/(.*)',
         headers: [
@@ -85,11 +82,10 @@ const nextConfig = {
     ];
   },
 
-  // Experimental features للأداء الأفضل
   experimental: {
-    optimizeCss: true, // تحسين CSS
-    optimizePackageImports: ['framer-motion', 'react-icons', 'leaflet'], // تحسين استيراد المكتبات الكبيرة
+    optimizeCss: true,
+    optimizePackageImports: ['framer-motion', 'react-icons', 'leaflet'],
   },
 };
 
-module.exports = nextConfig;
+export default withNextIntl(nextConfig);

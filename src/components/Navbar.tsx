@@ -1,24 +1,29 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Link from 'next/link';
-import { FiSearch, FiMenu, FiX } from 'react-icons/fi';
+import { FiMenu, FiX, FiGlobe } from 'react-icons/fi';
 import { motion, AnimatePresence } from 'framer-motion';
-
-const navItems = [
-  { name: 'المشاريع', href: '/projects' },
-  { name: 'من نحن', href: '/about' },
-  { name: 'تواصل معنا', href: '/contact' },
-];
+import { useTranslations, useLocale } from 'next-intl';
+import { Link, useRouter, usePathname } from '@/i18n/routing';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  
+  const t = useTranslations('Navbar');
+  const locale = useLocale();
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const navItems = [
+    { name: t('projects'), href: '/projects' },
+    { name: t('about'), href: '/about' },
+    { name: t('contact'), href: '/contact' },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
-      // تحديد إذا تم تجاوز Hero Section (مثلاً 100vh)
       const heroHeight = window.innerHeight;
       setIsScrolled(window.scrollY > heroHeight * 0.8);
     };
@@ -27,17 +32,21 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const toggleLanguage = () => {
+    const newLocale = locale === 'ar' ? 'en' : 'ar';
+    router.push(pathname, { locale: newLocale });
+  };
+
   return (
     <nav className="fixed top-0 w-full z-50 bg-black/30 backdrop-blur-sm">
       <div className="container mx-auto px-6 py-4">
         <div className="flex justify-between items-center">
           {/* Desktop Navigation - على الشمال */}
           <div className="hidden md:flex items-center gap-3 order-1">
-            {/* كل عنصر في فريم لوحده */}
             {navItems.map((item) => (
               <Link
                 key={item.name}
-                href={item.href}
+href={item.href as any}
                 className={`${
                   isScrolled ? 'text-black border-black/30' : 'text-white border-white/30'
                 } hover:bg-black/10 transition-all duration-300 text-sm font-light px-5 py-2.5 rounded-full border bg-white/5`}
@@ -47,15 +56,18 @@ export default function Navbar() {
               </Link>
             ))}
             
-            {/* Search Button في فريم - آخر حاجة بعد المشاريع */}
-            {/* <button 
+            {/* Language Toggle Button */}
+            <button 
+              onClick={toggleLanguage}
               className={`${
                 isScrolled ? 'text-black border-black/30' : 'text-white border-white/30'
-              } hover:bg-black/10 transition-all duration-300 border rounded-full p-2.5 bg-white/5`}
-              aria-label="Search"
+              } hover:bg-black/10 transition-all duration-300 border rounded-full px-4 py-2.5 bg-white/5 flex items-center gap-2 text-sm font-light`}
+              style={{ fontFamily: 'Alexandria, sans-serif' }}
+              aria-label="Change Language"
             >
-              <FiSearch size={18} />
-            </button> */}
+              <FiGlobe size={18} />
+              <span>{locale === 'ar' ? 'English' : 'العربية'}</span>
+            </button>
           </div>
 
           {/* Logo - على اليمين */}
@@ -81,9 +93,8 @@ export default function Navbar() {
                     isScrolled ? 'text-black' : 'text-white'
                   } transition-colors duration-300 text-right`}
                 >
-
                   <div className="text-xs mt-0.5" style={{ fontFamily: 'Alexandria, sans-serif' }}>
-                    شركة سديف للاستشارة الهندسية
+                    {t('companyName')}
                   </div>
                 </motion.div>
               )}
@@ -116,7 +127,7 @@ export default function Navbar() {
                 {navItems.map((item) => (
                   <Link
                     key={item.name}
-                    href={item.href}
+                    href={item.href as any}
                     className={`${
                       isScrolled ? 'text-black' : 'text-white'
                     } hover:opacity-70 transition-all duration-300 text-base`}
@@ -126,16 +137,20 @@ export default function Navbar() {
                   </Link>
                 ))}
                 
-                {/* Search in Mobile */}
+                {/* Language Toggle in Mobile */}
                 <button 
+                  onClick={() => {
+                    toggleLanguage();
+                    setIsOpen(false);
+                  }}
                   className={`${
                     isScrolled ? 'text-black' : 'text-white'
                   } hover:opacity-70 transition-all duration-300 flex items-center gap-2`}
                   style={{ fontFamily: 'Alexandria, sans-serif' }}
-                  aria-label="Search"
+                  aria-label="Change Language"
                 >
-                  <FiSearch size={20} />
-                  <span>بحث</span>
+                  <FiGlobe size={20} />
+                  <span>{locale === 'ar' ? 'English' : 'العربية'}</span>
                 </button>
               </div>
             </motion.div>
