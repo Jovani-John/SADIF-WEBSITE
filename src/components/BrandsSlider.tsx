@@ -1,7 +1,7 @@
 'use client';
 
-import { motion, useMotionValue, useSpring } from 'framer-motion';
-import { useRef } from 'react';
+import { motion } from 'framer-motion';
+import { useLocale } from 'next-intl';
 
 const brands = [
   '/imags/Alhawan.png',
@@ -17,15 +17,26 @@ const brands = [
 ];
 
 export default function BrandsSlider() {
-  const constraintsRef = useRef(null);
-  const x = useMotionValue(0);
-  
-  // Spring animation for smooth dragging
-  const springX = useSpring(x, {
-    stiffness: 150,
-    damping: 25,
-    mass: 0.5
-  });
+  const locale = useLocale();
+
+  // الترجمات
+  const translations = {
+    ar: {
+      title: "شركاء النجاح",
+      subtitle: "الشركات والمؤسسات التي وثقت بنا",
+      scrollHint: "← التمرير التلقائي ←"
+    },
+    en: {
+      title: "We've Worked With",
+      subtitle: "Trusted Partners Who Believed In Us",
+      scrollHint: "← Auto Scrolling →"
+    }
+  };
+
+  const t = translations[locale as keyof typeof translations] || translations.ar;
+
+  // مضاعفة البراندات للحصول على حركة سلسة لا نهائية
+  const duplicatedBrands = [...brands, ...brands, ...brands];
 
   return (
     <section className="py-20 bg-white overflow-hidden">
@@ -45,7 +56,7 @@ export default function BrandsSlider() {
             className="text-4xl md:text-6xl font-bold text-[#000000] leading-tight"
             style={{ fontFamily: 'Alexandria, sans-serif' }}
           >
-            We've worked with
+            {t.title}
           </motion.h2>
           
           <motion.p
@@ -56,7 +67,7 @@ export default function BrandsSlider() {
             className="text-lg md:text-xl text-[#979188]"
             style={{ fontFamily: 'Alexandria, sans-serif' }}
           >
-            شركاء النجاح الذين وثقوا بنا - اسحب لتصفح المزيد
+            {t.subtitle}
           </motion.p>
           
           <motion.div
@@ -69,61 +80,70 @@ export default function BrandsSlider() {
         </motion.div>
       </div>
 
-      {/* Draggable Slider */}
-      <div className="relative w-full overflow-hidden" ref={constraintsRef}>
+      {/* Auto-Scrolling Slider */}
+      <div className="relative w-full overflow-hidden">
         <motion.div
-          drag="x"
-          dragConstraints={constraintsRef}
-          dragElastic={0.2}
-          dragMomentum={true}
-          dragTransition={{ 
-            power: 0.2,
-            timeConstant: 200,
-            bounceStiffness: 100,
-            bounceDamping: 20
+          className="flex gap-8 md:gap-20 items-center"
+          animate={{
+            x: [0, -1920], // تحريك بمقدار عرض مجموعة البراندات
           }}
-          style={{ 
-            x: springX,
+          transition={{
+            x: {
+              repeat: Infinity,
+              repeatType: "loop",
+              duration: 40, // 40 ثانية للدورة الكاملة
+              ease: "linear",
+            },
+          }}
+          style={{
             width: 'max-content',
-            touchAction: 'pan-y pinch-zoom'
           }}
-          className="flex gap-12 md:gap-20 items-center cursor-grab active:cursor-grabbing select-none"
-          whileTap={{ cursor: 'grabbing' }}
         >
-          {brands.map((brand, index) => (
+          {duplicatedBrands.map((brand, index) => (
             <motion.div
               key={index}
               whileHover={{ 
                 scale: 1.05,
                 transition: { duration: 0.3 }
               }}
-              className="flex-shrink-0 w-32 h-24 md:w-48 md:h-32 flex items-center justify-center"
+              className="flex-shrink-0 w-28 h-20 md:w-48 md:h-32 flex items-center justify-center"
             >
               <img
                 src={brand}
-                alt={`Brand ${index + 1}`}
-                className="max-w-full max-h-full object-contain transition-all duration-300"
+                alt={`Brand ${(index % brands.length) + 1}`}
+                className="max-w-full max-h-full object-contain transition-all duration-300 will-change-transform"
                 draggable="false"
-                style={{ pointerEvents: 'none' }}
+                style={{ 
+                  pointerEvents: 'none',
+                  userSelect: 'none',
+                  WebkitUserDrag: 'none'
+                }}
+                loading="lazy"
               />
             </motion.div>
           ))}
         </motion.div>
 
-        {/* Gradient Overlays على الجوانب */}
-        <div className="absolute left-0 top-0 bottom-0 w-20 md:w-40 bg-gradient-to-r from-white via-white/50 to-transparent pointer-events-none z-10"></div>
-        <div className="absolute right-0 top-0 bottom-0 w-20 md:w-40 bg-gradient-to-l from-white via-white/50 to-transparent pointer-events-none z-10"></div>
+        {/* Gradient Overlays */}
+        <div className="absolute left-0 top-0 bottom-0 w-12 md:w-40 bg-gradient-to-r from-white via-white/70 to-transparent pointer-events-none z-10"></div>
+        <div className="absolute right-0 top-0 bottom-0 w-12 md:w-40 bg-gradient-to-l from-white via-white/70 to-transparent pointer-events-none z-10"></div>
       </div>
 
       {/* Scroll Indicator */}
       <div className="text-center mt-8">
         <motion.div
-          animate={{ x: [0, 10, 0] }}
-          transition={{ repeat: Infinity, duration: 1.5 }}
+          animate={{ 
+            opacity: [0.5, 1, 0.5],
+          }}
+          transition={{ 
+            repeat: Infinity, 
+            duration: 2,
+            ease: "easeInOut"
+          }}
           className="inline-flex items-center gap-2 text-[#979188] text-sm"
           style={{ fontFamily: 'Alexandria, sans-serif' }}
         >
-          <span>← اسحب لليمين واليسار →</span>
+          <span>{t.scrollHint}</span>
         </motion.div>
       </div>
     </section>
