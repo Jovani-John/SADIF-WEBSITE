@@ -111,13 +111,8 @@ export default function BrandsSlider() {
               <img
                 src={brand}
                 alt={`Brand ${(index % brands.length) + 1}`}
-                className="max-w-full max-h-full object-contain transition-all duration-300 will-change-transform"
+                className="max-w-full max-h-full object-contain transition-all duration-300 will-change-transform pointer-events-none select-none"
                 draggable="false"
-                style={{ 
-                  pointerEvents: 'none',
-                  userSelect: 'none',
-                  WebkitUserDrag: 'none'
-                }}
                 loading="lazy"
               />
             </motion.div>
