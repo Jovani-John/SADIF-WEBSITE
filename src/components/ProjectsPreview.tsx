@@ -54,7 +54,7 @@ export default function ProjectsSection() {
       subtitle: t("items.project2.subtitle"),
       titleEn: t("items.project2.titleEn"),
       subtitleEn: t("items.project2.subtitleEn"),
-      image: "/imags/2.jpg",
+      image: "/imags/Projects/InteriorDesign/GYM/1.jpg",
       number: "02",
     },
     {
@@ -63,7 +63,7 @@ export default function ProjectsSection() {
       subtitle: t("items.project3.subtitle"),
       titleEn: t("items.project3.titleEn"),
       subtitleEn: t("items.project3.subtitleEn"),
-      image: "/imags/3.jpg",
+      image: "/imags/Projects/InteriorDesign/BKGCC/1.jpg",
       number: "03",
     },
     {
@@ -72,7 +72,7 @@ export default function ProjectsSection() {
       subtitle: t("items.project4.subtitle"),
       titleEn: t("items.project4.titleEn"),
       subtitleEn: t("items.project4.subtitleEn"),
-      image: "/imags/4.jpg",
+      image: "/imags/Projects/architectural/Signage/1.jpg",
       number: "04",
     },
   ];

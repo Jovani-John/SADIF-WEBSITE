@@ -33,7 +33,7 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} dir={locale === 'ar' ? 'rtl' : 'ltr'}>
-      <body>
+      <body suppressHydrationWarning>
         <NextIntlClientProvider messages={messages}>
           <ClientWrapper>{children}</ClientWrapper>
         </NextIntlClientProvider>

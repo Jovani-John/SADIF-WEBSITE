@@ -25,6 +25,45 @@ const ProjectImage = ({
   const [shouldLoad, setShouldLoad] = useState(isPriority);
   const imgRef = useRef<HTMLDivElement>(null);
 
+  // ✅ فحص قوي للصورة - قبل أي حاجة باستخدام useMemo
+  const isValidImage = useMemo(() => {
+    if (!project?.image) {
+      console.warn(`Project ${project?.id || 'unknown'} has no image`);
+      return false;
+    }
+    
+    if (typeof project.image !== 'string') {
+      console.warn(`Project ${project.id} image is not a string:`, typeof project.image);
+      return false;
+    }
+    
+    const trimmedImage = project.image.trim();
+    if (trimmedImage === '') {
+      console.warn(`Project ${project.id} has empty image string`);
+      return false;
+    }
+    
+    // تحقق من أن الـ URL صحيح
+    if (!trimmedImage.startsWith('/') && !trimmedImage.startsWith('http')) {
+      console.warn(`Project ${project.id} has invalid image URL:`, trimmedImage);
+      return false;
+    }
+    
+    return true;
+  }, [project?.image, project?.id]);
+
+  // ✅ لو الصورة مش valid، ارجع placeholder فوراً قبل أي useEffect
+  if (!isValidImage) {
+    return (
+      <div className={`${className} bg-gradient-to-br from-gray-300 to-gray-400 flex items-center justify-center absolute inset-0`}>
+        <div className="text-center text-gray-600">
+          <FiImage className="w-8 h-8 mx-auto mb-2" />
+          <p className="text-xs">No image available</p>
+        </div>
+      </div>
+    );
+  }
+
   useEffect(() => {
     if (isPriority || shouldLoad) return;
 
@@ -49,7 +88,7 @@ const ProjectImage = ({
   }, [isPriority, shouldLoad]);
 
   const handleImageError = () => {
-    console.error(`Failed to load image: ${project.image}`);
+    console.error(`Failed to load image for project ${project.id}:`, project.image);
     setImageError(true);
   };
 
@@ -59,7 +98,7 @@ const ProjectImage = ({
 
   if (imageError) {
     return (
-      <div className={`${className} bg-gradient-to-br from-gray-300 to-gray-400 flex items-center justify-center`}>
+      <div className={`${className} bg-gradient-to-br from-gray-300 to-gray-400 flex items-center justify-center absolute inset-0`}>
         <div className="text-center text-gray-600">
           <FiImage className="w-8 h-8 mx-auto mb-2" />
           <p className="text-xs">Failed to load</p>
@@ -343,7 +382,7 @@ export default function ProjectsPage() {
 
                 return (
                   <motion.div
-                    key={`${project.id}-${retryKey}`}
+                    key={`project-${project.id}-${index}-${retryKey}`}
                     {...animProps}
                     viewport={{ 
                       once: true,

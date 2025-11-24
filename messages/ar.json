@@ -88,28 +88,27 @@
     "items": {
       "project1": {
         "title": "شوبينق مول في توبيك",
-        "subtitle": "شوبينق مول",
-"titleEn": "TURN A SPACE INTO A SHOPPING DESTINATION",
-"subtitleEn": "TABUK"
-        
+        "subtitle": "التصميم المعماري",
+        "titleEn": "تصميم مول تجاري فاخر يجمع بين الحداثة والراحة، مع مساحات واسعة وممرات تسوق مفتوحة",
+        "subtitleEn": "تبوك"
       },
       "project2": {
-        "title": "فيلا سكنية معاصرة",
-        "subtitle": "الرياض، المملكة العربية السعودية",
-        "titleEn": "CONTEMPORARY RESIDENTIAL VILLA",
-        "subtitleEn": "RIYADH, SAUDI ARABIA"
+        "title": "جيم",
+        "subtitle": "التصميم الداخلي",
+        "titleEn": "تم تصميم الجيم ليشمل مناطق تدريب متنوعة، أجهزة حديثة، منطقة للكارديو، ومساحات مفتوحة لتمارين جماعية، مع اختيار ألوان ومسطحات تعكس الطاقة والحيوية",
+        "subtitleEn": "الرياض، المملكة العربية السعودية"
       },
       "project3": {
-        "title": "تصميم داخلي فاخر",
-        "subtitle": "مكتب تنفيذي",
-        "titleEn": "LUXURY INTERIOR DESIGN",
-        "subtitleEn": "EXECUTIVE OFFICE"
+        "title": "BK GCC",
+        "subtitle": "التصميم الداخلي",
+        "titleEn": "تصميم داخلي حديث للشركة يشمل المكاتب والمساحات المشتركة بطريقة عملية وجذابة.",
+        "subtitleEn": "الرياض، المملكة العربية السعودية"
       },
       "project4": {
-        "title": "تصميم حدائق مستدام",
-        "subtitle": "منتجع سياحي",
-        "titleEn": "SUSTAINABLE LANDSCAPE DESIGN",
-        "subtitleEn": "TOURIST RESORT"
+        "title": "SIGNAGE",
+        "subtitle": "التصميم المعماري",
+        "titleEn": "تصميم معماري متكامل لمول تجاري حديث، يجمع بين المساحات المفتوحة والمحلات التجارية بطريقة منظمة وجذابة.",
+        "subtitleEn": "الرياض، المملكة العربية السعودية"
       }
     }
   },
