@@ -68,7 +68,7 @@ detailsEn: 'A fully integrated commercial mall project with a contemporary desig
   },
   {
   id: '18',
-  title: 'لإيلا خاصه',
+  title: 'فيلا خاصه',
   titleEn: 'Private villa',
   category: 'architectural',
   categoryAr: 'التصميم المعماري',
