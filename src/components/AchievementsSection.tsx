@@ -6,15 +6,15 @@ import Image from 'next/image';
 const services = [
   {
     key: 'architecture',
-    image: "/imags/1.jpg"
+    image: "/imags/Projects/architectural/ALHAWN/4.jpg"
   },
   {
     key: 'interior',
-    image: "/imags/2.jpg"
+    image: "/imags/Projects/InteriorDesign/BKGCC/2.jpg"
   },
   {
     key: 'landscape', 
-    image: "/imags/3.jpg"
+    image: "/imags/Projects/Landscape/Elbabaten/1.jpg"
   }
 ];
 

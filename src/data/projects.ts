@@ -32,9 +32,9 @@ export const projects: Project[] = [
     category: 'architectural',
     categoryAr: 'التصميم المعماري',
     categoryEn: 'Architectural Design',
-    city: 'تبوك',
-    cityEn: 'Tabuk',
-    year: '2025',
+    city: '',
+    cityEn: '',
+    year: '',
     image: '/imags/Projects/architectural/ShoppingMallTobouk/1.jpg',
     images: [
       '/imags/Projects/architectural/ShoppingMallTobouk/1.jpg',
@@ -68,14 +68,14 @@ detailsEn: 'A fully integrated commercial mall project with a contemporary desig
   },
   {
   id: '18',
-  title: 'فيلا كمال',
-  titleEn: 'Villa Kamal',
+  title: 'لإيلا خاصه',
+  titleEn: 'Private villa',
   category: 'architectural',
   categoryAr: 'التصميم المعماري',
   categoryEn: 'Architectural Design',
-  city: 'السعوديه',
-  cityEn: 'Saudi Arabia',
-  year: '2025',
+  city: '',
+  cityEn: '',
+  year: '',
   image: '/imags/Projects/architectural/VillaKamal/1.jpg',
   images: [
     '/imags/Projects/architectural/VillaKamal/1.jpg',
@@ -89,7 +89,7 @@ detailsEn: 'A fully integrated commercial mall project with a contemporary desig
   descriptionEn: 'Modern architectural design for a luxury villa, combining aesthetics and comfort with optimal space utilization.',
   details: 'شمل المشروع تصميم الواجهة الخارجية، المساحات الداخلية، الحدائق والمرافق الخاصة، مع الاهتمام بأدق التفاصيل لتوفير تجربة معيشية متكاملة.',
   detailsEn: 'The project included the exterior facade, interior spaces, gardens, and private amenities, focusing on fine details to provide a complete living experience.',
-  client: 'Villa Kamal',
+  client: 'Private villa',
 },
 {
   id: '19',
@@ -98,9 +98,9 @@ detailsEn: 'A fully integrated commercial mall project with a contemporary desig
   category: 'architectural',
   categoryAr: 'التصميم المعماري',
   categoryEn: 'Architectural Design',
-  city: 'السعوديه',
-  cityEn: 'Saudi Arabia',
-  year: '2025',
+  city: '',
+  cityEn: '',
+  year: '',
   image: '/imags/Projects/architectural/Signage/1.jpg',
   images: [
     '/imags/Projects/architectural/Signage/1.jpg',
@@ -143,9 +143,9 @@ detailsEn: 'A fully integrated commercial mall project with a contemporary desig
   category: 'architectural',
   categoryAr: 'التصميم المعماري',
   categoryEn: 'Architectural Design',
-  city: 'السعوديه',
-  cityEn: 'Saudi Arabia',
-  year: '2025',
+  city: '',
+  cityEn: '',
+  year: '',
   image: '/imags/Projects/architectural/mosque/1.jpg',
   images: [
     '/imags/Projects/architectural/mosque/1.jpg',
@@ -167,13 +167,13 @@ detailsEn: 'A fully integrated commercial mall project with a contemporary desig
 {
   id: '20',
   title: 'الهاون',
-  titleEn: 'ALHAWN',
+  titleEn: 'ALHAWAN',
   category: 'architectural',
   categoryAr: 'التصميم المعماري',
   categoryEn: 'Architectural Design',
-  city: 'السعوديه',
-  cityEn: 'Saudi Arabia',
-  year: '2025',
+  city: '',
+  cityEn: '',
+  year: '',
   image: '/imags/Projects/architectural/ALHAWN/1.jpg',
   images: [
     '/imags/Projects/architectural/ALHAWN/1.jpg',
@@ -187,7 +187,7 @@ detailsEn: 'A fully integrated commercial mall project with a contemporary desig
   descriptionEn: 'Architectural design for a modern building that combines functional aesthetics with contemporary design, maintaining a balance between interior and exterior spaces.',
   details: 'يشمل المشروع تخطيط المساحات الداخلية، الواجهات، المرافق، والمساحات الخارجية، مع التركيز على توفير بيئة عملية وجمالية في الوقت نفسه.',
   detailsEn: 'The project includes interior layouts, facades, facilities, and outdoor spaces, focusing on creating a functional and aesthetically pleasing environment.',
-  client: 'ALHAWN',
+  client: 'ALHAWAN',
 },
 
  {
@@ -197,9 +197,9 @@ detailsEn: 'A fully integrated commercial mall project with a contemporary desig
   category: 'landscape',
   categoryAr: 'تصميم الحدائق',
   categoryEn: 'Landscape Design',
-  city: 'السعوديه',
-  cityEn: 'Saudi Arabia',
-  year: '2023',
+  city: '',
+  cityEn: '',
+  year: '',
   image: '/imags/Projects/Landscape/JYC/1.jpg',
   images: [
     '/imags/Projects/Landscape/JYC/1.jpg',
@@ -227,9 +227,9 @@ detailsEn: 'A fully integrated commercial mall project with a contemporary desig
   category: 'landscape',
   categoryAr: 'تصميم الحدائق',
   categoryEn: 'Landscape Design',
-  city: 'السعوديه',
-  cityEn: 'Saudi Arabia',
-  year: '2024',
+  city: '',
+  cityEn: '',
+  year: '',
   image: '/imags/Projects/Landscape/Elmoheb/1.jpg',
   images: [
     '/imags/Projects/Landscape/Elmoheb/1.jpg',
@@ -254,9 +254,9 @@ detailsEn: 'A fully integrated commercial mall project with a contemporary desig
   category: 'landscape',
   categoryAr: 'تصميم الحدائق',
   categoryEn: 'Landscape Design',
-  city: 'الرياض',
-  cityEn: 'Riyadh',
-  year: '2023',
+  city: '',
+  cityEn: '',
+  year: '',
   image: '/imags/Projects/Landscape/Elbabaten/1.jpg',
   images: [
     '/imags/Projects/Landscape/Elbabaten/1.jpg',
@@ -274,14 +274,14 @@ detailsEn: 'A fully integrated commercial mall project with a contemporary desig
 
 {
   id: '5',
-  title: 'فيلا سعيد',
-  titleEn: 'Villa Saeed',
+  title: 'فيلا خاصه',
+  titleEn: 'Private villa',
   category: 'interior',
   categoryAr: 'التصميم الداخلي',
   categoryEn: 'Interior Design',
-  city: 'السعوديه',
-  cityEn: 'Saudi Arabia',
-  year: '2024',
+  city: '',
+  cityEn: '',
+  year: '',
   image: '/imags/Projects/Interior Design/VillaSaeed/1.jpg',
   images: [
     '/imags/Projects/InteriorDesign/VillaSaeed/1.jpg',
@@ -297,19 +297,19 @@ detailsEn: 'A fully integrated commercial mall project with a contemporary desig
   descriptionEn: 'Modern and luxurious interior design combining comfort and elegance in every corner of the villa',
   details: 'تتميز الفيلا بمساحات واسعة، غرف معيشة أنيقة، مطبخ مجهز، وغرف نوم فاخرة مع إضاءة وتصميم دقيق',
   detailsEn: 'The villa features spacious areas, elegant living rooms, a fully equipped kitchen, and luxurious bedrooms with precise lighting and design',
-  client: 'Villa Saeed'
+  client: 'Private villa'
 },
 
 {
   id: '6',
-  title: 'فيلا د. كمال',
-  titleEn: 'Villa DR.Kamel',
+  title: 'فيلا خاصه',
+  titleEn: 'Private villa',
   category: 'interior',
   categoryAr: 'التصميم الداخلي',
   categoryEn: 'Interior Design',
-  city: 'الرياض',
-  cityEn: 'Riyadh',
-  year: '2023',
+  city: '',
+  cityEn: '',
+  year: '',
   image: '/imags/Projects/InteriorDesign/VillaDR.Kamel/3.jpg',
   images: [
     '/imags/Projects/InteriorDesign/VillaDR.Kamel/1.jpg',
@@ -331,7 +331,7 @@ detailsEn: 'A fully integrated commercial mall project with a contemporary desig
   descriptionEn: 'Modern and luxurious interior design combining elegance and functional spaces throughout the villa',
   details: 'تتميز الفيلا بمساحات واسعة، غرف معيشة فخمة، مطبخ مجهز بالكامل، وغرف نوم أنيقة مع إضاءة مدروسة وتصميم دقيق',
   detailsEn: 'The villa features spacious areas, luxurious living rooms, a fully equipped kitchen, and elegant bedrooms with carefully planned lighting and design',
-  client: 'Villa DR.Kamel'
+  client: 'Private villa'
 },
 
 {
@@ -341,9 +341,9 @@ detailsEn: 'A fully integrated commercial mall project with a contemporary desig
   category: 'interior',
   categoryAr: 'التصميم الداخلي',
   categoryEn: 'Interior Design',
-  city: 'الرياض',
-  cityEn: 'Riyadh',
-  year: '2023',
+  city: '',
+  cityEn: '',
+  year: '',
   image: '/imags/Projects/InteriorDesign/Hotel/1.jpg',
   images: [
     '/imags/Projects/InteriorDesign/Hotel/1.jpg',
@@ -369,9 +369,9 @@ detailsEn: 'A fully integrated commercial mall project with a contemporary desig
   category: 'interior',
   categoryAr: 'التصميم الداخلي',
   categoryEn: 'Interior Design',
-  city: 'الرياض',
-  cityEn: 'Riyadh',
-  year: '2023',
+  city: '',
+  cityEn: '',
+  year: '',
   image: '/imags/Projects/InteriorDesign/TharwahTowers/1.jpg',
   images: [
     '/imags/Projects/InteriorDesign/TharwahTowers/1.jpg',
@@ -409,9 +409,9 @@ detailsEn: 'A fully integrated commercial mall project with a contemporary desig
   category: 'interior',
   categoryAr: 'التصميم الداخلي',
   categoryEn: 'Interior Design',
-  city: 'الرياض',
-  cityEn: 'Riyadh',
-  year: '2023',
+  city: '',
+  cityEn: '',
+  year: '',
   image: '/imags/Projects/InteriorDesign/Flat/1.jpg',
   images: [
     '/imags/Projects/InteriorDesign/Flat/1.jpg',
@@ -445,9 +445,9 @@ detailsEn: 'A fully integrated commercial mall project with a contemporary desig
   category: 'interior',
   categoryAr: 'التصميم الداخلي',
   categoryEn: 'Interior Design',
-  city: 'الرياض',
-  cityEn: 'Riyadh',
-  year: '2023',
+  city: '',
+  cityEn: '',
+  year: '',
   image: '/imags/Projects/InteriorDesign/Al-MutallaqeyaFlat/1.jpg',
   images: [
     '/imags/Projects/InteriorDesign/Al-MutallaqeyaFlat/1.jpg',
@@ -483,8 +483,8 @@ detailsEn: 'A fully integrated commercial mall project with a contemporary desig
   categoryAr: 'التصميم الداخلي',
   categoryEn: 'Interior Design',
   city: 'الرياض',
-  cityEn: 'Riyadh',
-  year: '2023',
+  cityEn: '',
+  year: '',
 
   image: '/imags/Projects/InteriorDesign/Bathroom/1.jpg',
 
@@ -521,9 +521,9 @@ detailsEn: 'A fully integrated commercial mall project with a contemporary desig
   category: 'interior',
   categoryAr: 'التصميم الداخلي',
   categoryEn: 'Interior Design',
-  city: 'الرياض',
-  cityEn: 'Riyadh',
-  year: '2023',
+  city: '',
+  cityEn: '',
+  year: '',
 
   image: '/imags/Projects/InteriorDesign/Dana/1.jpg',
 
@@ -581,9 +581,9 @@ detailsEn: 'A fully integrated commercial mall project with a contemporary desig
   category: 'interior',
   categoryAr: 'التصميم الداخلي',
   categoryEn: 'Interior Design',
-  city: 'الرياض',
-  cityEn: 'Riyadh',
-  year: '2023',
+  city: '',
+  cityEn: '',
+  year: '',
 
   image: '/imags/Projects/InteriorDesign/Lungo/1.jpg',
 
@@ -616,9 +616,9 @@ detailsEn: 'A fully integrated commercial mall project with a contemporary desig
   category: 'interior',
   categoryAr: 'التصميم الداخلي',
   categoryEn: 'Interior Design',
-  city: 'الرياض',
-  cityEn: 'Riyadh',
-  year: '2023',
+  city: '',
+  cityEn: '',
+  year: '',
 
   image: '/imags/Projects/InteriorDesign/GYM/1.jpg',
 
@@ -647,9 +647,9 @@ detailsEn: 'A fully integrated commercial mall project with a contemporary desig
   category: 'interior',
   categoryAr: 'التصميم الداخلي',
   categoryEn: 'Interior Design',
-  city: 'الرياض',
-  cityEn: 'Riyadh',
-  year: '2023',
+  city: '',
+  cityEn: '',
+  year: '',
 
   image: '/imags/Projects/InteriorDesign/EAL/1.jpg',
 
@@ -679,9 +679,9 @@ detailsEn: 'A fully integrated commercial mall project with a contemporary desig
   category: 'interior',
   categoryAr: 'التصميم الداخلي',
   categoryEn: 'Interior Design',
-  city: 'الرياض',
-  cityEn: 'Riyadh',
-  year: '2023',
+  city: '',
+  cityEn: '',
+  year: '',
 
   image: '/imags/Projects/InteriorDesign/CAVO/1.jpg',
 
@@ -718,9 +718,9 @@ detailsEn: 'A fully integrated commercial mall project with a contemporary desig
   category: 'interior',
   categoryAr: 'التصميم الداخلي',
   categoryEn: 'Interior Design',
-  city: 'الرياض',
-  cityEn: 'Riyadh',
-  year: '2023',
+  city: '',
+  cityEn: '',
+  year: '',
 
   image: '/imags/Projects/InteriorDesign/BKGCC/1.jpg',
 

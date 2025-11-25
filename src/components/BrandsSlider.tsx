@@ -85,7 +85,7 @@ export default function BrandsSlider() {
         <motion.div
           className="flex gap-8 md:gap-20 items-center"
           animate={{
-            x: [0, -1920], // تحريك بمقدار عرض مجموعة البراندات
+            x: locale === 'ar' ? [0, 1920] : [0, -1920], // عكس الاتجاه للعربي
           }}
           transition={{
             x: {
