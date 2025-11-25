@@ -282,7 +282,7 @@ detailsEn: 'A fully integrated commercial mall project with a contemporary desig
   city: '',
   cityEn: '',
   year: '',
-  image: '/imags/Projects/Interior Design/VillaSaeed/1.jpg',
+  image: '/imags/Projects/InteriorDesign/VillaSaeed/1.jpg',
   images: [
     '/imags/Projects/InteriorDesign/VillaSaeed/1.jpg',
     '/imags/Projects/InteriorDesign/VillaSaeed/7.jpg',

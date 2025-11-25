@@ -45,7 +45,7 @@ export default function ProjectsSection() {
       subtitle: t("items.project1.subtitle"),
       titleEn: t("items.project1.titleEn"),
       subtitleEn: t("items.project1.subtitleEn"),
-      image: "/imags/Projects/Shopping Mall Tobouk/HN 1.jpg",
+      image: "/imags/Projects/architectural/ShoppingMallTobouk/1.jpg",
       number: "01",
     },
     {
