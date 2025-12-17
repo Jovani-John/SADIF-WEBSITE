@@ -3,8 +3,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect, useRef } from 'react';
 import { IoChevronForward, IoChevronBack } from 'react-icons/io5';
 import { BiMessageRoundedDetail } from 'react-icons/bi';
+import { FaQuoteLeft } from 'react-icons/fa';
 import { useTranslations, useLocale } from 'next-intl';
-import Image from 'next/image';
 
 export default function Testimonials() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -18,21 +18,21 @@ export default function Testimonials() {
   const testimonials = [
     {
       id: 1,
-      projectName: t('projects.project1'),
-      image: '/ScreenShoot/1.jpg',
-      alt: t('projects.project1')
+      service: t('projects.project1'),
+      testimonial: t('testimonials.testimonial1'),
+      rating: 5
     },
     {
       id: 2,
-      projectName: t('projects.project2'),
-      image: '/ScreenShoot/2.jpg',
-      alt: t('projects.project2')
+      service: t('projects.project2'),
+      testimonial: t('testimonials.testimonial2'),
+      rating: 5
     },
     {
       id: 3,
-      projectName: t('projects.project3'),
-      image: '/ScreenShoot/3.jpg',
-      alt: t('projects.project3')
+      service: t('projects.project3'),
+      testimonial: t('testimonials.testimonial3'),
+      rating: 5
     }
   ];
 
@@ -95,12 +95,12 @@ export default function Testimonials() {
 
   return (
     <section className="relative min-h-screen bg-[#ECE6E3] py-8 sm:py-12 lg:py-16 px-4 overflow-hidden" aria-labelledby="testimonials-heading">
-
+      {/* Background decorations */}
       <div className={`absolute top-8 sm:top-16 ${isRTL ? 'right-4 sm:right-8' : 'left-4 sm:left-8'} w-32 sm:w-60 h-32 sm:h-60 bg-[#979188]/5 rounded-full blur-2xl`} />
       <div className={`absolute bottom-8 sm:bottom-16 ${isRTL ? 'left-4 sm:left-8' : 'right-4 sm:right-8'} w-40 sm:w-80 h-40 sm:h-80 bg-[#979188]/5 rounded-full blur-2xl`} />
 
       <div className="max-w-6xl mx-auto relative z-10">
-
+        {/* Header Section */}
         <motion.div
           variants={scrollReveal}
           initial="hidden"
@@ -110,7 +110,6 @@ export default function Testimonials() {
           className="mb-6 sm:mb-8 lg:mb-12"
         >
           <div className="flex flex-col items-center text-center gap-3 sm:gap-4 mb-4">
-
             <motion.div
               variants={scrollReveal}
               initial="hidden"
@@ -122,7 +121,6 @@ export default function Testimonials() {
               <div className="bg-gradient-to-br from-[#000000] to-[#979188] p-3 sm:p-4 lg:p-5 rounded-xl sm:rounded-2xl shadow-xl">
                 <BiMessageRoundedDetail className="text-2xl sm:text-3xl lg:text-4xl text-white" />
               </div>
-
               <motion.div
                 animate={{ scale: [1, 1.1, 1], opacity: [0.4, 0.7, 0.4] }}
                 transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
@@ -183,6 +181,7 @@ export default function Testimonials() {
           </motion.div>
         </motion.div>
 
+        {/* Carousel Section */}
         <motion.div
           variants={scrollReveal}
           initial="hidden"
@@ -190,7 +189,7 @@ export default function Testimonials() {
           viewport={{ once: true, margin: "-50px" }}
           className="relative mt-4 sm:mt-6 lg:mt-8"
         >
-
+          {/* Navigation Buttons */}
           <button
             onClick={prevSlide}
             onMouseEnter={() => setIsDragging(true)}
@@ -219,7 +218,8 @@ export default function Testimonials() {
             )}
           </button>
 
-          <div className="relative h-[350px] sm:h-[450px] md:h-[500px] lg:h-[550px]">
+          {/* Testimonials Cards */}
+          <div className="relative h-[400px] sm:h-[450px] md:h-[500px] lg:h-[450px]">
             <AnimatePresence initial={false} custom={direction} mode="popLayout">
               <motion.div
                 key={currentIndex}
@@ -245,52 +245,123 @@ export default function Testimonials() {
                 }}
                 className="absolute inset-0 flex items-center justify-center cursor-grab active:cursor-grabbing px-2 sm:px-3"
               >
-                <div className="relative max-w-xl w-full mx-auto">
+                <div className="relative max-w-3xl w-full mx-auto">
                   <motion.div
-                    initial={{ opacity: 0, y: 15 }}
+                    initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5 }}
-                    className="absolute -top-3 sm:-top-4 left-1/2 -translate-x-1/2 z-10 w-[85%] sm:w-auto"
+                    className="relative"
                   >
-                    <div className="bg-gradient-to-r from-[#000000] to-[#979188] text-white px-3 sm:px-4 lg:px-6 py-1.5 sm:py-2 lg:py-2.5 rounded-full shadow-lg text-xs sm:text-sm font-semibold text-center">
-                      {testimonials[currentIndex].projectName}
-                    </div>
-                  </motion.div>
-
-                  <motion.div
-                    whileHover={{ scale: 1.01 }}
-                    className="bg-white rounded-xl sm:rounded-2xl shadow-xl p-2 sm:p-3 lg:p-4 xl:p-5 overflow-hidden mt-1 sm:mt-0"
-                  >
-                    <div className="relative rounded-lg sm:rounded-xl overflow-hidden bg-gradient-to-br from-gray-100 to-gray-50">
-                      <Image
-                        src={testimonials[currentIndex].image}
-                        alt={testimonials[currentIndex].alt}
-                        width={600}
-                        height={400}
-                        className="w-full h-auto object-contain max-h-[250px] sm:max-h-[350px] lg:max-h-[400px]"
-                        loading="lazy"
-                        quality={80}
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 60vw"
-                      />
+                    {/* Main Card */}
+                    <div className="bg-gradient-to-br from-white to-gray-50 rounded-2xl sm:rounded-3xl shadow-2xl p-6 sm:p-8 lg:p-10 overflow-hidden border border-gray-100">
+                      {/* Quote Icons */}
+                      <motion.div
+                        initial={{ scale: 0, rotate: -180 }}
+                        whileInView={{ scale: 1, rotate: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6, delay: 0.2 }}
+                        className={`absolute top-4 ${isRTL ? 'right-4' : 'left-4'} text-[#979188]/20`}
+                      >
+                        <FaQuoteLeft className="text-3xl sm:text-4xl lg:text-5xl" />
+                      </motion.div>
                       
-                      <div className={`absolute top-1.5 sm:top-2 lg:top-2.5 ${isRTL ? 'right-1.5 sm:right-2 lg:right-2.5' : 'left-1.5 sm:left-2 lg:left-2.5'} bg-green-500 text-white px-1.5 sm:px-2 lg:px-2.5 py-0.5 sm:py-1 lg:py-1 rounded-full text-[9px] sm:text-xs font-semibold flex items-center gap-0.5 sm:gap-1 shadow-md`}>
-                        <span className="text-xs sm:text-sm">✓</span>
-                        <span>{t('realChat')}</span>
-                      </div>
+                      <motion.div
+                        initial={{ scale: 0, rotate: 180 }}
+                        whileInView={{ scale: 1, rotate: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6, delay: 0.2 }}
+                        className={`absolute bottom-4 ${isRTL ? 'left-4' : 'right-4'} text-[#979188]/20`}
+                      >
+                        <FaQuoteLeft className="text-3xl sm:text-4xl lg:text-5xl rotate-180" />
+                      </motion.div>
+
+                      {/* Service Badge */}
+                      <motion.div
+                        initial={{ opacity: 0, y: -10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5, delay: 0.3 }}
+                        className="flex justify-center mb-6"
+                      >
+                        <div className="bg-gradient-to-r from-[#000000] to-[#979188] text-white px-4 sm:px-5 lg:px-6 py-2 sm:py-2.5 rounded-full shadow-lg text-xs sm:text-sm font-semibold inline-flex items-center gap-2">
+                          <span className="text-base sm:text-lg">✓</span>
+                          <span>{testimonials[currentIndex].service}</span>
+                        </div>
+                      </motion.div>
+
+                      {/* Testimonial Text */}
+                      <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5, delay: 0.4 }}
+                        className="relative z-10 text-center mb-6 px-8 sm:px-12"
+                      >
+                        <p className="text-lg sm:text-xl lg:text-2xl font-medium text-[#000000] leading-relaxed mb-4">
+                          {testimonials[currentIndex].testimonial}
+                        </p>
+                      </motion.div>
+
+                      {/* Rating Stars */}
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5, delay: 0.5 }}
+                        className="flex justify-center gap-1 mb-4"
+                      >
+                        {[...Array(testimonials[currentIndex].rating)].map((_, i) => (
+                          <motion.span
+                            key={i}
+                            initial={{ opacity: 0, scale: 0 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.3, delay: 0.6 + (i * 0.1) }}
+                            className="text-yellow-500 text-xl sm:text-2xl"
+                          >
+                            ★
+                          </motion.span>
+                        ))}
+                      </motion.div>
+
+                      {/* Client Badge */}
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5, delay: 0.7 }}
+                        className="flex justify-center items-center gap-2"
+                      >
+                        <div className="bg-green-500 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold flex items-center gap-1.5 shadow-md">
+                          <span className="text-sm sm:text-base">✓</span>
+                          <span>{t('realChat')}</span>
+                        </div>
+                      </motion.div>
+
+                      {/* Decorative Elements */}
+                      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-gradient-to-br from-[#979188]/5 to-transparent rounded-full blur-3xl -z-10" />
                     </div>
+
+                    {/* Shadow Effect */}
+                    <motion.div
+                      animate={{ scale: [1, 1.02, 1], opacity: [0.3, 0.5, 0.3] }}
+                      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                      className="absolute inset-0 bg-gradient-to-br from-[#000000]/5 to-[#979188]/5 rounded-2xl sm:rounded-3xl blur-xl -z-10"
+                    />
                   </motion.div>
                 </div>
               </motion.div>
             </AnimatePresence>
           </div>
 
+          {/* Dots Navigation */}
           <motion.div
             variants={scrollReveal}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="flex justify-center gap-1.5 sm:gap-2 mt-4 sm:mt-6 lg:mt-8"
+            className="flex justify-center gap-1.5 sm:gap-2 mt-6 sm:mt-8 lg:mt-10"
           >
             {testimonials.map((_, index) => (
               <button
@@ -309,6 +380,7 @@ export default function Testimonials() {
           </motion.div>
         </motion.div>
 
+        {/* Bottom Quote */}
         <motion.div
           variants={scrollReveal}
           initial="hidden"

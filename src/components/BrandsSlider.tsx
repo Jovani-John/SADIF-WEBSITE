@@ -14,6 +14,7 @@ const brands = [
   '/imags/JYS.png',
   '/imags/NSH.png',
   '/imags/SPC.png',
+  '/imags/TKAF.png',
 ];
 
 export default function BrandsSlider() {

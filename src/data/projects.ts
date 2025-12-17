@@ -27,7 +27,7 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: '1',
-    title: 'شوبينق مول في تبوك',
+    title: 'شوبينج مول في تبوك',
     titleEn: 'Shopping Mall in Tabuk',
     category: 'architectural',
     categoryAr: 'التصميم المعماري',
@@ -93,8 +93,8 @@ detailsEn: 'A fully integrated commercial mall project with a contemporary desig
 },
 {
   id: '19',
-  title: 'SIGNAGE',
-  titleEn: 'SIGNAGE',
+  title: '',
+  titleEn: '',
   category: 'architectural',
   categoryAr: 'التصميم المعماري',
   categoryEn: 'Architectural Design',
@@ -135,7 +135,7 @@ detailsEn: 'A fully integrated commercial mall project with a contemporary desig
   descriptionEn: 'Comprehensive architectural design for a modern shopping mall, combining open spaces and retail stores in an organized and attractive manner.',
   details: 'يشمل المشروع تصميم واجهات المول، توزيع المحلات، المساحات العامة، المرافق والخدمات مع مراعاة تجربة الزائر وسهولة الحركة داخل المول.',
   detailsEn: 'The project includes the mall facades, store layout, public areas, facilities, and services, ensuring a smooth visitor experience and easy navigation within the mall.',
-  client: 'SIGNAGE',
+  client: '',
 },{
   id: '23',
   title: 'MOSQUE',
@@ -223,7 +223,7 @@ detailsEn: 'A fully integrated commercial mall project with a contemporary desig
 {
   id: '3',
   title: 'المهيب',
-  titleEn: 'Al Muheeb',
+  titleEn: 'Almuhaideb',
   category: 'landscape',
   categoryAr: 'تصميم الحدائق',
   categoryEn: 'Landscape Design',
@@ -244,7 +244,7 @@ detailsEn: 'A fully integrated commercial mall project with a contemporary desig
   descriptionEn: 'Innovative landscape design combining natural beauty, a swimming pool, and a garage to create a complete and attractive environment',
   details: 'يشمل المشروع مساحات خضراء، ممرات، مناطق جلوس، مسبح، وجراج للسيارات لتجربة متكاملة تجمع بين الاسترخاء والوظائف العملية',
   detailsEn: 'The project features green spaces, pathways, seating areas, a swimming pool, and a garage, offering a complete experience combining relaxation and functionality',
-  client: 'Al Muheeb',
+  client: 'Almuhaideb',
 },
 
 {

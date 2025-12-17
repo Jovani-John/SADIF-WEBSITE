@@ -20,7 +20,7 @@
       "description": "We are an emerging Saudi engineering consultancy firm, dedicated to transforming the fields of architecture, interior design, and landscape design in the Kingdom. Our team consists of experienced architects, designers, and consultants who deliver world-class solutions that blend creativity with practical functionality.",
       "stats": {
         "projects": "Completed Projects",
-        "clients": "Satisfied Clients",
+        "clients": "study plans",
         "experience": "Years Experience"
       },
       "vision": {
@@ -109,7 +109,7 @@
           "title": "",
           "subtitle": "Tourist Resort",
           "titleEn": "Comprehensive architectural design for a modern shopping mall, combining open spaces and retail stores in an organized and attractive manner.",
-          "subtitleEn": "SIGNAGE"
+          "subtitleEn": ""
         }
       }
     },
@@ -159,17 +159,22 @@
       "subtitle": "Trusted Partners - Scroll to View More",
       "scrollHint": "← Scroll Left & Right →"
     },
-    "Testimonials": {
-      "title": "Client Testimonials",
-      "subtitle": "Real Voices, Real Trust",
-      "description": "Real opinions from our clients reflecting",
-      "quality": "the quality of our services and commitment to excellence",
-      "realChat": "Real Conversation",
-      "quote": "Our clients' opinions reflect their trust in the quality of our services and our commitment to achieving their engineering dreams",
-      "projects": {
-        "project1": "Material & Color Selection Consultation",
-        "project2": "Interior Design",
-        "project3": "Engineering Consultancy"
+  "Testimonials": {
+    "title": "Client Testimonials",
+    "subtitle": "Real Voices, Real Trust",
+    "description": "Real opinions from our clients reflecting",
+    "quality": "the quality of our services and commitment to excellence",
+    "realChat": "Real Conversation",
+    "quote": "Our clients' opinions reflect their trust in the quality of our services and our commitment to achieving their engineering dreams",
+    "projects": {
+      "project1": "Material & Color Selection Consultation",
+      "project2": "Interior Design",
+      "project3": "Engineering Consultancy"
+    },
+    "testimonials": {
+      "testimonial1": "عزا الله اختيار موفق، بيض الله وجهك وعاجز عن شكرك",
+      "testimonial2": "ممتاز قواك الله سلمت الأيادي",
+      "testimonial3": "بالله عليك دكتور إذا فيه اي اضافه او تعديل ثاني ما تتردد، لك الحمد الموضوع جدا بسيط"
       }
     },
     "Achievements": {
@@ -292,7 +297,7 @@
     },
     "Stats": {
       "projects": "Completed Projects",
-      "clients": "Satisfied Clients",
+      "clients": "study plans",
       "experience": "Years Experience",
       "satisfaction": "Satisfaction Rate"
     }

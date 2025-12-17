@@ -42,7 +42,7 @@ export default function AboutSection() {
   
   // Memoized data for better performance
   const stats = useMemo(() => [
-    { number: 50, label: t('stats.projects'), suffix: '+' },
+    { number: 170, label: t('stats.projects'), suffix: '+' },
     { number: 30, label: t('stats.clients'), suffix: '+' },
     { number: 10, label: t('stats.experience'), suffix: '+' },
   ], [t]);
