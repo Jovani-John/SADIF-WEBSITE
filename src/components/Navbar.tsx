@@ -5,6 +5,7 @@ import { FiMenu, FiX, FiGlobe } from 'react-icons/fi';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslations, useLocale } from 'next-intl';
 import { Link, useRouter, usePathname } from '@/i18n/routing';
+import Image from 'next/image';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -46,7 +47,7 @@ export default function Navbar() {
             {navItems.map((item) => (
               <Link
                 key={item.name}
-href={item.href as any}
+                href={item.href as any}
                 className={`${
                   isScrolled ? 'text-black border-black/30' : 'text-white border-white/30'
                 } hover:bg-black/10 transition-all duration-300 text-sm font-light px-5 py-2.5 rounded-full border bg-white/5`}
@@ -77,11 +78,30 @@ href={item.href as any}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
           >
-            <div className={`${
-              isScrolled ? 'text-black' : 'text-white'
-            } text-3xl font-bold tracking-wider hover:opacity-80 transition-all duration-300`}>
-              SADIF
+            <div className="relative h-20 w-48 hover:opacity-80 transition-all duration-300">
+              {/* اللوجو الأسود - يظهر في البداية */}
+              <Image
+                src="/imags/logoW.png" // اللوجو الأسود أولاً
+                alt="SADIF Logo"
+                fill
+                className={`object-contain transition-opacity duration-300 ${
+                  isScrolled ? 'opacity-0' : 'opacity-100'
+                }`}
+                priority
+              />
+              
+              {/* اللوجو الأبيض - يظهر بعد التمرير */}
+              <Image
+                src="/imags/logo.png" // اللوجو الأبيض بعد التمرير
+                alt="SADIF Logo"
+                fill
+                className={`object-contain transition-opacity duration-300 ${
+                  isScrolled ? 'opacity-100' : 'opacity-0'
+                }`}
+                priority
+              />
             </div>
+            
             <AnimatePresence>
               {isHovered && (
                 <motion.div
@@ -90,7 +110,7 @@ href={item.href as any}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.3, ease: 'easeOut' }}
                   className={`${
-                    isScrolled ? 'text-black' : 'text-white'
+                    isScrolled ? 'text-white' : 'text-black' // عكس الألوان هنا أيضاً
                   } transition-colors duration-300 text-right`}
                 >
                   <div className="text-xs mt-0.5" style={{ fontFamily: 'Alexandria, sans-serif' }}>
@@ -104,7 +124,7 @@ href={item.href as any}
           {/* Mobile Menu Button */}
           <button
             className={`md:hidden ${
-              isScrolled ? 'text-black' : 'text-white'
+              isScrolled ? 'text-white' : 'text-black' // عكس الألوان هنا أيضاً
             } hover:opacity-70 transition-all duration-300 order-3`}
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
@@ -129,7 +149,7 @@ href={item.href as any}
                     key={item.name}
                     href={item.href as any}
                     className={`${
-                      isScrolled ? 'text-black' : 'text-white'
+                      isScrolled ? 'text-white' : 'text-black'
                     } hover:opacity-70 transition-all duration-300 text-base`}
                     onClick={() => setIsOpen(false)}
                   >
@@ -144,7 +164,7 @@ href={item.href as any}
                     setIsOpen(false);
                   }}
                   className={`${
-                    isScrolled ? 'text-black' : 'text-white'
+                    isScrolled ? 'text-white' : 'text-black'
                   } hover:opacity-70 transition-all duration-300 flex items-center gap-2`}
                   style={{ fontFamily: 'Alexandria, sans-serif' }}
                   aria-label="Change Language"
