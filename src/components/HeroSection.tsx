@@ -42,27 +42,14 @@ export default function HeroSection() {
     };
   }, [nextText]);
 
-  // ⚡ CRITICAL: Lazy load video
+  // ⚡ Load video immediately
   useEffect(() => {
     const video = videoRef.current;
-    if (!video) return;
+    if (!video || videoLoaded) return;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && !videoLoaded) {
-            video.src = '/videos/hero.mp4';
-            video.load();
-            setVideoLoaded(true);
-            observer.disconnect();
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    observer.observe(video);
-    return () => observer.disconnect();
+    video.src = '/videos/hero.mp4';
+    video.load();
+    setVideoLoaded(true);
   }, [videoLoaded]);
 
   return (
@@ -73,7 +60,7 @@ export default function HeroSection() {
         style={{ opacity, scale }}
         className="fixed top-0 left-0 w-full h-screen flex items-center justify-center overflow-hidden z-10 pointer-events-none"
       >
-        {/* ⚡ CRITICAL: Optimized Video */}
+        {/* ⚡ Video loads immediately */}
         <div className="absolute inset-0">
           <video
             ref={videoRef}
@@ -81,15 +68,14 @@ export default function HeroSection() {
             loop
             muted
             playsInline
-            preload="none"
-            poster="/videos/hero.mp4"
+            preload="auto"
             className="w-full h-full object-cover"
             style={{ 
-              willChange: videoLoaded ? 'auto' : 'transform',
+              willChange: 'auto',
               transform: 'translateZ(0)', // GPU acceleration
             }}
           >
-            {/* Source added dynamically */}
+            <source src="/videos/hero.mp4" type="video/mp4" />
           </video>
         </div>
 

@@ -78,25 +78,14 @@ export default function Navbar() {
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
           >
-            <div className="relative h-20 w-48 hover:opacity-80 transition-all duration-300">
-              {/* اللوجو الأسود - يظهر في البداية */}
+            <div className="relative h-12 w-28 md:h-20 md:w-48 hover:opacity-80 transition-all duration-300">
+              {/* اللوجو - يتغير لونه من أبيض لأسود */}
               <Image
-                src="/imags/logoW.png" // اللوجو الأسود أولاً
+                src="/imags/logoW.png"
                 alt="SADIF Logo"
                 fill
-                className={`object-contain transition-opacity duration-300 ${
-                  isScrolled ? 'opacity-0' : 'opacity-100'
-                }`}
-                priority
-              />
-              
-              {/* اللوجو الأبيض - يظهر بعد التمرير */}
-              <Image
-                src="/imags/logo.png" // اللوجو الأبيض بعد التمرير
-                alt="SADIF Logo"
-                fill
-                className={`object-contain transition-opacity duration-300 ${
-                  isScrolled ? 'opacity-100' : 'opacity-0'
+                className={`object-contain transition-all duration-300 ${
+                  isScrolled ? 'brightness-0' : 'brightness-100'
                 }`}
                 priority
               />
@@ -110,7 +99,7 @@ export default function Navbar() {
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.3, ease: 'easeOut' }}
                   className={`${
-                    isScrolled ? 'text-white' : 'text-black' // عكس الألوان هنا أيضاً
+                    isScrolled ? 'text-white' : 'text-black'
                   } transition-colors duration-300 text-right`}
                 >
                   <div className="text-xs mt-0.5" style={{ fontFamily: 'Alexandria, sans-serif' }}>
@@ -124,7 +113,7 @@ export default function Navbar() {
           {/* Mobile Menu Button */}
           <button
             className={`md:hidden ${
-              isScrolled ? 'text-white' : 'text-black' // عكس الألوان هنا أيضاً
+              isScrolled ? 'text-white' : 'text-black'
             } hover:opacity-70 transition-all duration-300 order-3`}
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
