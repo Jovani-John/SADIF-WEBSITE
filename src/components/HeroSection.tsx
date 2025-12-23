@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef, useCallback, useMemo } from 'react';
-import { motion, AnimatePresence, useScroll, useTransform, LazyMotion, domAnimation, m } from 'framer-motion';
+import { AnimatePresence, useScroll, useTransform, LazyMotion, domAnimation, m } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
 
@@ -16,7 +16,6 @@ export default function HeroSection() {
   ], [t]);
 
   const [currentText, setCurrentText] = useState(0);
-  const [videoLoaded, setVideoLoaded] = useState(false);
   const heroPlaceholderRef = useRef<HTMLElement>(null);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -42,15 +41,15 @@ export default function HeroSection() {
     };
   }, [nextText]);
 
-  // ⚡ Load video immediately
+  // ⚡ Load video immediately on mount
   useEffect(() => {
     const video = videoRef.current;
-    if (!video || videoLoaded) return;
+    if (!video) return;
 
+    // Set video source immediately
     video.src = '/videos/hero.mp4';
     video.load();
-    setVideoLoaded(true);
-  }, [videoLoaded]);
+  }, []); // Empty dependency array - runs once on mount
 
   return (
     <LazyMotion features={domAnimation} strict>
@@ -127,7 +126,7 @@ export default function HeroSection() {
 
         {/* Gradient overlay */}
         <div 
-          className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-black/60 to-transparent" 
+          className="absolute bottom-0 left-0 right-0 h-24 bg-linear-to-t from-black/60 to-transparent" 
           style={{ pointerEvents: 'none' }}
         />
       </m.section>

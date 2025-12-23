@@ -18,9 +18,9 @@ export default function Navbar() {
   const pathname = usePathname();
 
   const navItems = [
-    { name: t('projects'), href: '/projects' },
-    { name: t('about'), href: '/about' },
-    { name: t('contact'), href: '/contact' },
+    { name: t('projects'), href: '/projects' as const },
+    { name: t('about'), href: '/about' as const },
+    { name: t('contact'), href: '/contact' as const },
   ];
 
   useEffect(() => {
@@ -47,7 +47,7 @@ export default function Navbar() {
             {navItems.map((item) => (
               <Link
                 key={item.name}
-                href={item.href as any}
+                href={item.href}
                 className={`${
                   isScrolled ? 'text-black border-black/30' : 'text-white border-white/30'
                 } hover:bg-black/10 transition-all duration-300 text-sm font-light px-5 py-2.5 rounded-full border bg-white/5`}
@@ -136,7 +136,7 @@ export default function Navbar() {
                 {navItems.map((item) => (
                   <Link
                     key={item.name}
-                    href={item.href as any}
+                    href={item.href}
                     className={`${
                       isScrolled ? 'text-white' : 'text-black'
                     } hover:opacity-70 transition-all duration-300 text-base`}

@@ -52,13 +52,12 @@ export const metadata: Metadata = {
     ],
     apple: "/imags/logo.png",
   },
-  // manifest سيتم توليده تلقائياً من app/manifest.ts
-  
-  // Verification (أضف لو عندك)
-  // verification: {
-  //   google: "your-google-verification-code",
-  // },
 };
+
+// دالة مساعدة للتحقق من صحة اللغة
+function isValidLocale(locale: string): locale is 'ar' | 'en' {
+  return routing.locales.includes(locale as 'ar' | 'en');
+}
 
 export default async function RootLayout({
   children,
@@ -70,7 +69,7 @@ export default async function RootLayout({
   const { locale } = await params;
   
   // تأكد أن اللغة صحيحة
-  if (!routing.locales.includes(locale as any)) {
+  if (!isValidLocale(locale)) {
     notFound();
   }
 
@@ -87,17 +86,14 @@ export default async function RootLayout({
     description: 'شركة سديف للاستشارة الهندسية - خبرة في المشاريع الهندسية والتصميم المعماري وإدارة المشاريع',
     contactPoint: {
       '@type': 'ContactPoint',
-      telephone: '+966-559-033-519', // ضع رقم الهاتف الحقيقي
+      telephone: '+966-559-033-519',
       contactType: 'customer service',
       areaServed: 'SA',
       availableLanguage: ['ar', 'en']
     },
     sameAs: [
-      // ضع لينكات السوشيال ميديا هنا
-       'https://www.instagram.com/sadif.co/',
+      'https://www.instagram.com/sadif.co/',
       'https://www.tiktok.com/@sadif510?is_from_webapp=1&sender_device=pc',
-      // 'https://www.linkedin.com/company/sadif',
-      // 'https://twitter.com/sadif',
     ]
   };
 
