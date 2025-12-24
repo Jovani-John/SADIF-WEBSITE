@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.sadif.sa
+
+# Sitemaps
+Sitemap: https://www.sadif.sa/sitemap.xml
