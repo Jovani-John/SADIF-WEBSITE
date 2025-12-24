@@ -14,9 +14,9 @@ export const metadata: Metadata = {
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"
   ),
-  title: "SADIF - شركة سديف للاستشارة الهندسية",
+  title: "SADIF - شركة سديف الاستشارات الهندسية",
   description:
-    "شركة سديف للاستشارة الهندسية - خبرة في المشاريع الهندسية والتصميم المعماري وإدارة المشاريع",
+    "شركة سديف الاستشارات الهندسية - خبرة في المشاريع الهندسية والتصميم المعماري وإدارة المشاريع",
   keywords: [
     "سديف",
     "استشارات هندسية",
@@ -31,16 +31,16 @@ export const metadata: Metadata = {
     type: "website",
     locale: "ar_SA",
     alternateLocale: ["en_US"],
-    url: "https://www.sadif.sa/en",
+    url: "https://www.sadif.sa",
     siteName: "SADIF",
-    title: "SADIF - شركة سديف للاستشارة الهندسية",
+    title: "SADIF - شركة سديف الاستشارات الهندسية",
     description:
-      "شركة سديف للاستشارة الهندسية - خبرة في المشاريع الهندسية والتصميم المعماري وإدارة المشاريع",
+      "شركة سديف الاستشارات الهندسية - خبرة في المشاريع الهندسية والتصميم المعماري وإدارة المشاريع",
     images: [
       {
-        url: "/imags/logoW.png",
+        url: "/images/logoW.png", // ✅ تصحيح المسار
         width: 1200,
-        height: 1200,
+        height: 630,
         alt: "SADIF Logo",
       },
     ],
@@ -49,9 +49,9 @@ export const metadata: Metadata = {
   // Twitter Card
   twitter: {
     card: "summary_large_image",
-    title: "SADIF - شركة سديف للاستشارة الهندسية",
-    description: "شركة سديف للاستشارة الهندسية - خبرة في المشاريع الهندسية",
-    images: ["/imags/logoW.png"],
+    title: "SADIF - شركة سديف الاستشارات الهندسية",
+    description: "شركة سديف الاستشارات الهندسية - خبرة في المشاريع الهندسية",
+    images: ["/images/logoW.png"], // ✅ تصحيح المسار
   },
 
   // Icons & Manifest
@@ -62,6 +62,21 @@ export const metadata: Metadata = {
     ],
     apple: [
       { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+    // ✅ إضافة Android Chrome icons
+    other: [
+      {
+        rel: "icon",
+        url: "/android-chrome-192x192.png",
+        sizes: "192x192",
+        type: "image/png",
+      },
+      {
+        rel: "icon",
+        url: "/android-chrome-512x512.png",
+        sizes: "512x512",
+        type: "image/png",
+      },
     ],
   },
 };
@@ -91,12 +106,12 @@ export default async function RootLayout({
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "SADIF - شركة سديف للاستشارة الهندسية",
+    name: "SADIF - شركة سديف الاستشارات الهندسية",
     alternateName: "SADIF Engineering Consultancy",
-    url: "https://www.sadif.sa/en",
-    logo: "https://www.sadif.sa/en/imags/logo.png",
+    url: "https://www.sadif.sa",
+    logo: "https://www.sadif.sa/images/logo.png", // ✅ تصحيح المسار
     description:
-      "شركة سديف للاستشارة الهندسية - خبرة في المشاريع الهندسية والتصميم المعماري وإدارة المشاريع",
+      "شركة سديف الاستشارات الهندسية - خبرة في المشاريع الهندسية والتصميم المعماري وإدارة المشاريع",
     contactPoint: {
       "@type": "ContactPoint",
       telephone: "+966-559-033-519",
