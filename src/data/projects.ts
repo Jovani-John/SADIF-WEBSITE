@@ -837,4 +837,518 @@ export const projects: Project[] = [
 
     client: "BK GCC",
   },
+
+  {
+    id: "24",
+    title: "ميم",
+    titleEn: "Meem",
+    category: "interior",
+    categoryAr: "التصميم الداخلي",
+    categoryEn: "Interior Design",
+    city: "",
+    cityEn: "",
+    year: "",
+
+    image: "/imags/Projects/InteriorDesign/Meem/1.jpg",
+
+    images: [
+      "/imags/Projects/InteriorDesign/Meem/1.jpg",
+      "/imags/Projects/InteriorDesign/Meem/2.jpg",
+      "/imags/Projects/InteriorDesign/Meem/3.jpg",
+      "/imags/Projects/InteriorDesign/Meem/4.jpg",
+      "/imags/Projects/InteriorDesign/Meem/5.jpg",
+      "/imags/Projects/InteriorDesign/Meem/6.jpg",
+      "/imags/Projects/InteriorDesign/Meem/7.jpg",
+      "/imags/Projects/InteriorDesign/Meem/8.jpg",
+      "/imags/Projects/InteriorDesign/Meem/9.jpg",
+    ],
+description:
+  "تصميم داخلي عصري لكافيه ميم يعكس هوية المكان ويوفر أجواء مريحة ودافئة للزوار.",
+descriptionEn:
+  "Modern interior design for Meem Café that reflects the brand identity and creates a cozy, welcoming atmosphere.",
+
+details:
+  "تم الاهتمام بتفاصيل الإضاءة والألوان وتوزيع الجلسات لخلق تجربة مميزة تجمع بين الراحة والطابع العصري، مع إبراز منطقة الطلب والجلوس بشكل جذاب.",
+detailsEn:
+  "Focused on lighting, color harmony, and seating layout to deliver a unique experience that blends comfort with a modern vibe, highlighting both the ordering counter and seating areas.",
+
+    client: "Meem",
+  },
+  
+  {
+    id: "25",
+    title: "مبنى تجاري في الدمام",
+    titleEn: "Commercial building in Dammam",
+    category: "architectural",
+    categoryAr: "التصميم المعماري",
+    categoryEn: "Architectural Design",
+    city: "Dammam",
+    cityEn: "الدمام",
+    year: "",
+
+    image: "/imags/Projects/architectural/CommercialbuildinginDammam/1.jpg",
+
+    images: [
+      "/imags/Projects/architectural/CommercialbuildinginDammam/1.jpg",
+      "/imags/Projects/architectural/CommercialbuildinginDammam/2.jpg",
+      "/imags/Projects/architectural/CommercialbuildinginDammam/3.jpg",
+      "/imags/Projects/architectural/CommercialbuildinginDammam/4.jpg",
+      "/imags/Projects/architectural/CommercialbuildinginDammam/5.jpg",
+      "/imags/Projects/architectural/CommercialbuildinginDammam/6.jpg",
+
+    ],
+description:
+  "تصميم داخلي عصري لمبنى تجاري يعكس هوية المكان ويحقق توازناً بين العملية والجاذبية البصرية.",
+descriptionEn:
+  "Modern interior design for a commercial building that reflects the identity of the space while balancing functionality and visual appeal.",
+
+details:
+  "تم التركيز على تنظيم المساحات الداخلية، وتوزيع الأنشطة بشكل ذكي، مع الاهتمام بالإضاءة والألوان لخلق بيئة عملية ومريحة تناسب الاستخدام التجاري.",
+detailsEn:
+  "Focused on efficient space planning, smart functional zoning, and the use of lighting and color schemes to create a practical and comfortable commercial environment.",
+
+client: "Commercial building in Dammam",
+
+  },
+
+
+  {
+  id: "26",
+  title: "مبنى تجاري – الخبر الشمالية",
+  titleEn: "Commercial Building – North Al Khobar",
+  category: "architectural",
+  categoryAr: "التصميم المعماري",
+  categoryEn: "Architectural Design",
+
+  city: "الخبر الشمالية",
+  cityEn: "North Al Khobar",
+  year: "",
+
+  image: "/imags/Projects/architectural/CommercialbuildinginNorthAlKhobar/1.jpg",
+
+  images: [
+    "/imags/Projects/architectural/CommercialBuildingInNorthAlKhobar/1.jpg",
+    "/imags/Projects/architectural/CommercialBuildingInNorthAlKhobar/2.jpg",
+    "/imags/Projects/architectural/CommercialBuildingInNorthAlKhobar/3.jpg",
+    "/imags/Projects/architectural/CommercialBuildingInNorthAlKhobar/4.jpg",
+    "/imags/Projects/architectural/CommercialBuildingInNorthAlKhobar/5.jpg",
+    "/imags/Projects/architectural/CommercialBuildingInNorthAlKhobar/6.jpg",
+    "/imags/Projects/architectural/CommercialBuildingInNorthAlKhobar/7.jpg",
+    "/imags/Projects/architectural/CommercialBuildingInNorthAlKhobar/8.jpg",
+    "/imags/Projects/architectural/CommercialBuildingInNorthAlKhobar/9.jpg",
+  ],
+
+  description:
+    "تصميم معماري عصري لمبنى تجاري في الخبر الشمالية يركز على إبراز الهوية المعمارية وتحقيق الكفاءة الوظيفية.",
+  descriptionEn:
+    "Modern architectural design for a commercial building in North Al Khobar, focusing on architectural identity and functional efficiency.",
+
+  details:
+    "يركز التصميم على التخطيط المعماري الذكي، وتوزيع المساحات التجارية بشكل عملي، مع مراعاة الحركة، الإضاءة الطبيعية، وسهولة الوصول لتلبية متطلبات المباني التجارية.",
+  detailsEn:
+    "The design focuses on smart architectural planning, efficient distribution of commercial spaces, smooth circulation, natural lighting, and accessibility to meet commercial building requirements.",
+
+  client: "Commercial Building – North Al Khobar",
+},
+
+{
+  id: "27",
+  title: "مبنى تجاري – المجمعة",
+  titleEn: "Commercial Building – Al Majmaah",
+  category: "architectural",
+  categoryAr: "التصميم المعماري",
+  categoryEn: "Architectural Design",
+
+  city: "المجمعة",
+  cityEn: "Al Majmaah",
+year: "",
+  image: "/imags/Projects/architectural/CommercialBuildingInAlMajmaah/1.jpg",
+
+  images: [
+    "/imags/Projects/architectural/CommercialBuildingInAlMajmaah/1.jpg",
+    "/imags/Projects/architectural/CommercialBuildingInAlMajmaah/2.jpg",
+    "/imags/Projects/architectural/CommercialBuildingInAlMajmaah/3.jpg",
+    "/imags/Projects/architectural/CommercialBuildingInAlMajmaah/4.jpg",
+  ],
+
+  description:
+    "تصميم معماري عصري لمبنى تجاري في المجمعة يركز على البساطة والوضوح المعماري مع تحقيق كفاءة عالية في استخدام المساحات.",
+  descriptionEn:
+    "Modern architectural design for a commercial building in Al Majmaah, focusing on simplicity, clarity, and efficient use of space.",
+
+  details:
+    "تم تطوير التصميم ليخدم الأنشطة التجارية المختلفة من خلال تخطيط عملي للمساحات، مع مراعاة سهولة الحركة، الإضاءة الطبيعية، وتكامل الواجهات مع الطابع العمراني للمنطقة.",
+  detailsEn:
+    "The design was developed to support various commercial activities through practical space planning, smooth circulation, natural lighting, and façade integration with the surrounding urban context.",
+
+  client: "Commercial Building – Al Majmaah",
+},
+
+ {
+  id: "28",
+  title: "مبنى تجاري – الخبر",
+  titleEn: "Commercial Building – Al Khobar",
+  category: "architectural",
+  categoryAr: "التصميم المعماري",
+  categoryEn: "Architectural Design",
+
+  city: "الخبر",
+  cityEn: "Al Khobar",
+  year: "",
+
+  image: "/imags/Projects/architectural/CommercialBuildingInAlKhobar/1.jpg",
+
+  images: [
+    "/imags/Projects/architectural/CommercialBuildingInAlKhobar/1.jpg",
+    "/imags/Projects/architectural/CommercialBuildingInAlKhobar/2.jpg",
+    "/imags/Projects/architectural/CommercialBuildingInAlKhobar/3.jpg",
+    "/imags/Projects/architectural/CommercialBuildingInAlKhobar/4.jpg",
+    "/imags/Projects/architectural/CommercialBuildingInAlKhobar/5.jpg",
+    "/imags/Projects/architectural/CommercialBuildingInAlKhobar/6.jpg",
+  ],
+
+  description:
+    "تصميم معماري عصري لمبنى تجاري في الخبر يركز على التوازن بين الشكل الجمالي والكفاءة الوظيفية للمساحات.",
+  descriptionEn:
+    "Modern architectural design for a commercial building in Al Khobar, focusing on the balance between aesthetic form and functional efficiency of spaces.",
+
+  details:
+    "تم تخطيط المساحات الداخلية والخارجية بشكل عملي، مع مراعاة الحركة، الإضاءة الطبيعية، وتكامل الواجهات مع الطابع العمراني للمنطقة لضمان بيئة تجارية متكاملة.",
+  detailsEn:
+    "The interior and exterior spaces were planned practically, considering circulation, natural lighting, and façade integration with the surrounding urban context to ensure a complete commercial environment.",
+
+  client: "Commercial Building – Al Khobar",
+},
+{
+  id: "29",
+  title: "قصر – الظهران",
+  titleEn: "Palace – Dhahran",
+  category: "architectural",
+  categoryAr: "التصميم المعماري",
+  categoryEn: "Architectural Design",
+
+  city: "الظهران",
+  cityEn: "Dhahran",
+  year: "",
+
+  image: "/imags/Projects/architectural/PalaceInDhahran/1.png",
+
+  images: [
+    "/imags/Projects/architectural/PalaceInDhahran/1.png",
+    "/imags/Projects/architectural/PalaceInDhahran/2.png",
+    "/imags/Projects/architectural/PalaceInDhahran/3.png",
+    "/imags/Projects/architectural/PalaceInDhahran/4.png",
+
+  ],
+
+  description:
+    "تصميم معماري فاخر لقصر في الظهران يركز على الجمع بين الفخامة والراحة مع إبراز التفاصيل المعمارية الفريدة.",
+  descriptionEn:
+    "Luxurious architectural design for a palace in Dhahran, focusing on combining elegance and comfort while highlighting unique architectural details.",
+
+  details:
+    "تم تطوير التصميم ليعكس الطابع الفخم للقصر مع تنظيم المساحات الداخلية والخارجية بشكل متناسق، مع الاهتمام بالإضاءة، التهوية، وتوزيع الغرف لتلبية احتياجات الإقامة الملكية.",
+  detailsEn:
+    "The design was developed to reflect the palace’s luxurious character with harmonious interior and exterior spaces, emphasizing lighting, ventilation, and room layout to meet royal living requirements.",
+
+  client: "Palace – Dhahran",
+},
+{
+  id: "30",
+  title: "فيلا سكنية – الظهران",
+  titleEn: "Residential Villa – Dhahran",
+  category: "architectural",
+  categoryAr: "التصميم المعماري",
+  categoryEn: "Architectural Design",
+
+  city: "الظهران",
+  cityEn: "Dhahran",
+  year: "",
+
+  image: "/imags/Projects/architectural/ResidentialVillaInDhahran/1.jpg",
+
+  images: [
+    "/imags/Projects/architectural/ResidentialVillaInDhahran/1.jpg",
+    "/imags/Projects/architectural/ResidentialVillaInDhahran/2.jpg",
+    "/imags/Projects/architectural/ResidentialVillaInDhahran/3.jpg",
+    "/imags/Projects/architectural/ResidentialVillaInDhahran/4.jpg",
+    "/imags/Projects/architectural/ResidentialVillaInDhahran/5.jpg",
+    "/imags/Projects/architectural/ResidentialVillaInDhahran/6.jpg",
+  ],
+
+  description:
+    "تصميم معماري عصري لفيلا سكنية في الظهران يجمع بين الراحة والفخامة مع الاهتمام بتوزيع المساحات الداخلية والخارجية بشكل متناسق.",
+  descriptionEn:
+    "Modern architectural design for a residential villa in Dhahran, combining comfort and luxury with harmonious distribution of interior and exterior spaces.",
+
+  details:
+    "تم تصميم المساحات الداخلية والخارجية بعناية لتوفير بيئة مريحة للسكن، مع الاهتمام بالإضاءة الطبيعية، التهوية، وتوزيع الغرف بطريقة عملية وجمالية.",
+  detailsEn:
+    "Interior and exterior spaces were carefully designed to provide a comfortable living environment, with emphasis on natural lighting, ventilation, and practical yet aesthetic room layout.",
+
+  client: "Residential Villa – Dhahran",
+},
+{
+  id: "31",
+  title: "فيلا سكنية – 1",
+  titleEn: "Residential Villa – 1",
+  category: "architectural",
+  categoryAr: "التصميم المعماري",
+  categoryEn: "Architectural Design",
+
+  city: "",
+  cityEn: "",
+  year: "",
+
+  image: "/imags/Projects/architectural/ResidentialVilla1/1.jpg",
+
+  images: [
+    "/imags/Projects/architectural/ResidentialVilla1/1.jpg",
+    "/imags/Projects/architectural/ResidentialVilla1/2.jpg",
+    "/imags/Projects/architectural/ResidentialVilla1/3.jpg",
+    "/imags/Projects/architectural/ResidentialVilla1/4.jpg",
+    "/imags/Projects/architectural/ResidentialVilla1/5.jpg",
+    "/imags/Projects/architectural/ResidentialVilla1/6.jpg",
+    "/imags/Projects/architectural/ResidentialVilla1/7.jpg",
+    "/imags/Projects/architectural/ResidentialVilla1/8.jpg",
+    "/imags/Projects/architectural/ResidentialVilla1/9.jpg",
+    "/imags/Projects/architectural/ResidentialVilla1/10.jpg",
+    "/imags/Projects/architectural/ResidentialVilla1/11.jpg",
+    "/imags/Projects/architectural/ResidentialVilla1/12.jpg",
+    "/imags/Projects/architectural/ResidentialVilla1/13.jpg",
+    "/imags/Projects/architectural/ResidentialVilla1/14.jpg",
+  ],
+
+  description:
+    "تصميم معماري عصري لفيلا سكنية يركز على الراحة والفخامة مع توزيع متناسق للمساحات الداخلية والخارجية.",
+  descriptionEn:
+    "Modern architectural design for a residential villa, focusing on comfort and luxury with a harmonious distribution of interior and exterior spaces.",
+
+  details:
+    "تم تصميم المساحات بعناية لتوفير بيئة سكنية مريحة وجمالية، مع الاهتمام بالإضاءة الطبيعية، التهوية، وتوزيع الغرف بشكل عملي وأنيق.",
+  detailsEn:
+    "The spaces were carefully designed to provide a comfortable and aesthetic living environment, emphasizing natural lighting, ventilation, and practical yet elegant room layout.",
+
+  client: "Residential Villa – 1",
+},
+{
+  id: "32",
+  title: "فيلا – الظهران",
+  titleEn: "Villa – Dhahran",
+  category: "architectural",
+  categoryAr: "التصميم المعماري",
+  categoryEn: "Architectural Design",
+
+  city: "الظهران",
+  cityEn: "Dhahran",
+  year: "",
+
+  image: "/imags/Projects/architectural/VillaInDhahran/1.jpg",
+
+  images: [
+    "/imags/Projects/architectural/VillaInDhahran/1.jpg",
+    "/imags/Projects/architectural/VillaInDhahran/2.jpg",
+    "/imags/Projects/architectural/VillaInDhahran/3.jpg",
+    "/imags/Projects/architectural/VillaInDhahran/4.jpg",
+    "/imags/Projects/architectural/VillaInDhahran/5.jpg",
+    "/imags/Projects/architectural/VillaInDhahran/6.jpg",
+    "/imags/Projects/architectural/VillaInDhahran/7.jpg",
+    "/imags/Projects/architectural/VillaInDhahran/8.jpg",
+    "/imags/Projects/architectural/VillaInDhahran/9.jpg",
+    "/imags/Projects/architectural/VillaInDhahran/10.jpg",
+    "/imags/Projects/architectural/VillaInDhahran/11.jpg",
+    "/imags/Projects/architectural/VillaInDhahran/12.jpg",
+    "/imags/Projects/architectural/VillaInDhahran/13.jpg",
+  ],
+
+  description:
+    "تصميم معماري عصري لفيلا في الظهران يجمع بين الراحة والفخامة مع توزيع متناسق للمساحات الداخلية والخارجية.",
+  descriptionEn:
+    "Modern architectural design for a villa in Dhahran, combining comfort and luxury with harmonious distribution of interior and exterior spaces.",
+
+  details:
+    "تم تصميم المساحات بعناية لتوفير بيئة سكنية مريحة وأنيقة، مع التركيز على الإضاءة الطبيعية، التهوية، وتوزيع الغرف بشكل عملي وجمالي.",
+  detailsEn:
+    "The spaces were carefully designed to provide a comfortable and elegant living environment, focusing on natural lighting, ventilation, and practical yet aesthetic room layout.",
+
+  client: "Villa – Dhahran",
+},
+{
+  id: "33",
+  title: "شاليه – الخبر",
+  titleEn: "Chalet – Al Khobar",
+  category: "architectural",
+  categoryAr: "التصميم المعماري",
+  categoryEn: "Architectural Design",
+
+  city: "الخبر",
+  cityEn: "Al Khobar",
+  year: "",
+
+  image: "/imags/Projects/architectural/ChaletInAlKhobar/1.jpg",
+
+  images: [
+    "/imags/Projects/architectural/ChaletInAlKhobar/1.jpg",
+    "/imags/Projects/architectural/ChaletInAlKhobar/2.jpg",
+    "/imags/Projects/architectural/ChaletInAlKhobar/3.jpg",
+    "/imags/Projects/architectural/ChaletInAlKhobar/4.jpg",
+    "/imags/Projects/architectural/ChaletInAlKhobar/5.jpg",
+    "/imags/Projects/architectural/ChaletInAlKhobar/6.jpg",
+    "/imags/Projects/architectural/ChaletInAlKhobar/7.jpg",
+    "/imags/Projects/architectural/ChaletInAlKhobar/8.jpg",
+    "/imags/Projects/architectural/ChaletInAlKhobar/9.jpg",
+    "/imags/Projects/architectural/ChaletInAlKhobar/10.jpg",
+    "/imags/Projects/architectural/ChaletInAlKhobar/11.jpg",
+    "/imags/Projects/architectural/ChaletInAlKhobar/12.jpg",
+    "/imags/Projects/architectural/ChaletInAlKhobar/13.jpg",
+    "/imags/Projects/architectural/ChaletInAlKhobar/14.jpg",
+    "/imags/Projects/architectural/ChaletInAlKhobar/15.jpg",
+    "/imags/Projects/architectural/ChaletInAlKhobar/16.jpg",
+    "/imags/Projects/architectural/ChaletInAlKhobar/17.jpg",
+  ],
+
+  description:
+    "تصميم معماري عصري لشاليه في الخبر يجمع بين الراحة والفخامة مع تكامل المساحات الداخلية والخارجية لتجربة سكنية متكاملة.",
+  descriptionEn:
+    "Modern architectural design for a chalet in Al Khobar, combining comfort and luxury with integrated interior and exterior spaces for a complete living experience.",
+
+  details:
+    "تم تصميم المساحات الداخلية والخارجية بعناية لتوفير بيئة مريحة وجمالية، مع التركيز على الإضاءة الطبيعية، التهوية، وتوزيع الغرف بشكل عملي وأنيق لتلبية احتياجات السكن الفاخر.",
+  detailsEn:
+    "Interior and exterior spaces were carefully designed to provide a comfortable and aesthetic environment, focusing on natural lighting, ventilation, and practical yet elegant room layout to meet luxury living needs.",
+
+  client: "Chalet – Al Khobar",
+},
+{
+  id: "34",
+  title: "شاليه – الرياض",
+  titleEn: "Chalet – Riyadh",
+  category: "architectural",
+  categoryAr: "التصميم المعماري",
+  categoryEn: "Architectural Design",
+
+  city: "الرياض",
+  cityEn: "Riyadh",
+  year: "",
+
+  image: "/imags/Projects/architectural/ChaletInRiyadh/1.jpg",
+
+  images: [
+    "/imags/Projects/architectural/ChaletInRiyadh/1.jpg",
+    "/imags/Projects/architectural/ChaletInRiyadh/2.jpg",
+    "/imags/Projects/architectural/ChaletInRiyadh/3.jpg",
+    "/imags/Projects/architectural/ChaletInRiyadh/4.jpg",
+    "/imags/Projects/architectural/ChaletInRiyadh/5.jpg",
+    "/imags/Projects/architectural/ChaletInRiyadh/6.jpg",
+  ],
+
+  description:
+    "تصميم معماري عصري لشاليه في الرياض يجمع بين الراحة والفخامة مع توزيع متناسق للمساحات الداخلية والخارجية.",
+  descriptionEn:
+    "Modern architectural design for a chalet in Riyadh, combining comfort and luxury with a harmonious distribution of interior and exterior spaces.",
+
+  details:
+    "تم تصميم المساحات الداخلية والخارجية بعناية لتوفير بيئة مريحة وجمالية، مع التركيز على الإضاءة الطبيعية، التهوية، وتوزيع الغرف بشكل عملي وأنيق.",
+  detailsEn:
+    "Interior and exterior spaces were carefully designed to provide a comfortable and aesthetic environment, focusing on natural lighting, ventilation, and practical yet elegant room layout.",
+
+  client: "Chalet – Riyadh",
+},
+{
+  id: "35",
+  title: "تجاري – المجمعة",
+  titleEn: "Commercial – Al Majmaah",
+  category: "architectural",
+  categoryAr: "التصميم المعماري",
+  categoryEn: "Architectural Design",
+
+  city: "المجمعة",
+  cityEn: "Al Majmaah",
+  year: "",
+
+  image: "/imags/Projects/architectural/CommercialInAlMajmaah/1.jpg",
+
+  images: [
+    "/imags/Projects/architectural/CommercialInAlMajmaah/1.jpg",
+    "/imags/Projects/architectural/CommercialInAlMajmaah/2.jpg",
+    "/imags/Projects/architectural/CommercialInAlMajmaah/3.jpg",
+    "/imags/Projects/architectural/CommercialInAlMajmaah/4.jpg",
+    "/imags/Projects/architectural/CommercialInAlMajmaah/5.jpg",
+    "/imags/Projects/architectural/CommercialInAlMajmaah/6.jpg",
+    "/imags/Projects/architectural/CommercialInAlMajmaah/7.jpg",
+    "/imags/Projects/architectural/CommercialInAlMajmaah/8.jpg",
+    "/imags/Projects/architectural/CommercialInAlMajmaah/9.jpg",
+    "/imags/Projects/architectural/CommercialInAlMajmaah/10.jpg",
+    "/imags/Projects/architectural/CommercialInAlMajmaah/12.jpg",
+    "/imags/Projects/architectural/CommercialInAlMajmaah/13.jpg",
+    "/imags/Projects/architectural/CommercialInAlMajmaah/14.jpg",
+    "/imags/Projects/architectural/CommercialInAlMajmaah/15.jpg",
+    "/imags/Projects/architectural/CommercialInAlMajmaah/16.jpg",
+    "/imags/Projects/architectural/CommercialInAlMajmaah/17.jpg",
+    "/imags/Projects/architectural/CommercialInAlMajmaah/18.jpg",
+    "/imags/Projects/architectural/CommercialInAlMajmaah/19.jpg",
+    "/imags/Projects/architectural/CommercialInAlMajmaah/20.jpg",
+    "/imags/Projects/architectural/CommercialInAlMajmaah/21.jpg",
+    "/imags/Projects/architectural/CommercialInAlMajmaah/22.jpg",
+    "/imags/Projects/architectural/CommercialInAlMajmaah/23.jpg",
+    "/imags/Projects/architectural/CommercialInAlMajmaah/24.jpg",
+    "/imags/Projects/architectural/CommercialInAlMajmaah/25.jpg",
+    "/imags/Projects/architectural/CommercialInAlMajmaah/26.jpg",
+    "/imags/Projects/architectural/CommercialInAlMajmaah/27.jpg",
+    "/imags/Projects/architectural/CommercialInAlMajmaah/28.jpg",
+    "/imags/Projects/architectural/CommercialInAlMajmaah/31.jpg",
+    "/imags/Projects/architectural/CommercialInAlMajmaah/32.jpg",
+  ],
+
+  description:
+    "تصميم معماري عصري لمشروع تجاري في المجمعة يركز على التوزيع العملي للمساحات والتكامل بين الوظائف التجارية المختلفة.",
+  descriptionEn:
+    "Modern architectural design for a commercial project in Al Majmaah, focusing on practical space distribution and integration of various commercial functions.",
+
+  details:
+    "تم تصميم المساحات الداخلية والخارجية بعناية لتلبية احتياجات النشاط التجاري، مع مراعاة الحركة، الإضاءة الطبيعية، وتكامل الواجهات مع الطابع العمراني للمنطقة.",
+  detailsEn:
+    "Interior and exterior spaces were carefully designed to meet commercial activity requirements, considering circulation, natural lighting, and façade integration with the surrounding urban context.",
+
+  client: "Commercial – Al Majmaah",
+},
+{
+  id: "36",
+  title: "برج مكتبي",
+  titleEn: "Office Tower",
+  category: "architectural",
+  categoryAr: "التصميم المعماري",
+  categoryEn: "Architectural Design",
+
+  city: "",
+  cityEn: "",
+  year: "",
+
+  image: "/imags/Projects/architectural/OfficeTower/1.jpg",
+
+  images: [
+    "/imags/Projects/architectural/OfficeTower/1.jpg",
+    "/imags/Projects/architectural/OfficeTower/2.jpg",
+    "/imags/Projects/architectural/OfficeTower/3.jpg",
+    "/imags/Projects/architectural/OfficeTower/4.jpg",
+    "/imags/Projects/architectural/OfficeTower/5.jpg",
+    "/imags/Projects/architectural/OfficeTower/6.jpg",
+    "/imags/Projects/architectural/OfficeTower/7.jpg",
+    "/imags/Projects/architectural/OfficeTower/8.jpg",
+    "/imags/Projects/architectural/OfficeTower/9.jpg",
+  ],
+
+  description:
+    "تصميم معماري عصري لبرج مكتبي يركز على الكفاءة الوظيفية والجمالية المعمارية للواجهات والمساحات الداخلية.",
+  descriptionEn:
+    "Modern architectural design for an office tower, focusing on functional efficiency and architectural aesthetics of the façades and interior spaces.",
+
+  details:
+    "تم تخطيط المساحات المكتبية بعناية مع مراعاة الحركة، الإضاءة الطبيعية، وتوزيع المرافق لضمان بيئة عمل عملية ومريحة.",
+  detailsEn:
+    "Office spaces were carefully planned considering circulation, natural lighting, and facilities distribution to ensure a practical and comfortable working environment.",
+
+  client: "Office Tower",
+},
+ 
 ];
